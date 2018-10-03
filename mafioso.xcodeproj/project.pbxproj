@@ -54,14 +54,38 @@
 		A38E0141215DCCB900F041C7 /* mafioso */ = {
 			isa = PBXGroup;
 			children = (
-				A38E0142215DCCB900F041C7 /* AppDelegate.swift */,
-				A38E0144215DCCB900F041C7 /* ViewController.swift */,
-				A38E0146215DCCB900F041C7 /* Main.storyboard */,
+				A38E0154215DCD0D00F041C7 /* Model */,
+				A38E0155215DCD1700F041C7 /* View */,
+				A38E0156215DCD1D00F041C7 /* Controller */,
 				A38E0149215DCCBB00F041C7 /* Assets.xcassets */,
-				A38E014B215DCCBB00F041C7 /* LaunchScreen.storyboard */,
 				A38E014E215DCCBB00F041C7 /* Info.plist */,
 			);
 			path = mafioso;
+			sourceTree = "<group>";
+		};
+		A38E0154215DCD0D00F041C7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A38E0155215DCD1700F041C7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A38E0146215DCCB900F041C7 /* Main.storyboard */,
+				A38E014B215DCCBB00F041C7 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A38E0156215DCD1D00F041C7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A38E0142215DCCB900F041C7 /* AppDelegate.swift */,
+				A38E0144215DCCB900F041C7 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +309,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T97EC4A29F;
 				INFOPLIST_FILE = mafioso/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +328,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T97EC4A29F;
 				INFOPLIST_FILE = mafioso/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
