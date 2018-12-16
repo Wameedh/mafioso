@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HdQ-MH-b8e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HdQ-MH-b8e">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -55,7 +55,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="O3D-sq-Ean">
-                        <barButtonItem key="rightBarButtonItem" title="How To Play" id="bKN-ME-mtm"/>
+                        <barButtonItem key="rightBarButtonItem" title="How To Play" id="bKN-ME-mtm">
+                            <connections>
+                                <segue destination="VhN-em-Z0S" kind="show" id="cf8-BQ-YPS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -108,203 +112,89 @@
             </objects>
             <point key="canvasLocation" x="860" y="856"/>
         </scene>
+        <!--How to Play TVC-->
+        <scene sceneID="6hs-rh-ztg">
+            <objects>
+                <tableViewController id="VhN-em-Z0S" userLabel="How to Play TVC" customClass="HowToPlayTVC" customModule="mafioso" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QQF-M9-UZX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="HowToPlayCell" id="BkV-5f-sQn">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BkV-5f-sQn" id="Dr2-HZ-qgC">
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VhN-em-Z0S" id="MH5-Pd-VbR"/>
+                            <outlet property="delegate" destination="VhN-em-Z0S" id="h05-dR-EY5"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="mQj-Wp-IEa" kind="show" identifier="howToPlayDetails" id="b4R-hm-sKv"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FV7-75-th1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1676" y="-534"/>
+        </scene>
+        <!--How To Play DetailsVC-->
+        <scene sceneID="enR-Wl-SK9">
+            <objects>
+                <viewController id="mQj-Wp-IEa" customClass="HowToPlayDetailsVC" customModule="mafioso" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KC6-Fe-NLi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETG-P9-D9K">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i2-HC-yyR">
+                                        <rect key="frame" x="20" y="20" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="4i2-HC-yyR" firstAttribute="top" secondItem="ETG-P9-D9K" secondAttribute="top" constant="20" id="QaS-YT-M1Z"/>
+                                    <constraint firstItem="4i2-HC-yyR" firstAttribute="leading" secondItem="ETG-P9-D9K" secondAttribute="leading" constant="20" id="VM0-C3-NOk"/>
+                                    <constraint firstAttribute="trailing" secondItem="4i2-HC-yyR" secondAttribute="trailing" constant="20" id="eg3-RX-DUT"/>
+                                    <constraint firstAttribute="bottom" secondItem="4i2-HC-yyR" secondAttribute="bottom" constant="40" id="hSw-ep-fXV"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ETG-P9-D9K" firstAttribute="trailing" secondItem="kKz-Wj-bai" secondAttribute="trailing" id="6FW-33-I1j"/>
+                            <constraint firstItem="ETG-P9-D9K" firstAttribute="bottom" secondItem="kKz-Wj-bai" secondAttribute="bottom" id="HHV-p1-nTK"/>
+                            <constraint firstItem="ETG-P9-D9K" firstAttribute="leading" secondItem="kKz-Wj-bai" secondAttribute="leading" id="ofc-qH-bsg"/>
+                            <constraint firstItem="ETG-P9-D9K" firstAttribute="top" secondItem="kKz-Wj-bai" secondAttribute="top" id="sN4-eQ-jpI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kKz-Wj-bai"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lFG-kE-xce"/>
+                    <connections>
+                        <outlet property="howToPlayDetailsLable" destination="4i2-HC-yyR" id="BJo-UV-AND"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tGz-dj-6UT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2480.8000000000002" y="-539.28035982008998"/>
+        </scene>
         <!--Number of players View Controller-->
         <scene sceneID="daZ-dH-GMm">
             <objects>
-                <viewController id="t9I-x0-fjY" userLabel="Number of players View Controller" sceneMemberID="viewController">
+                <viewController id="t9I-x0-fjY" userLabel="Number of players View Controller" customClass="NumberOfPlayersVC" customModule="mafioso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3us-0U-5VX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="n1n-F5-B92">
-                                <rect key="frame" x="23" y="376" width="330" height="240"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="pZu-9b-wte">
-                                        <rect key="frame" x="0.0" y="0.0" width="330" height="60"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ya3-aJ-6z5">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                <color key="backgroundColor" red="0.1019607843" green="0.73725490199999999" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="4">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ze7-wo-9En">
-                                                <rect key="frame" x="90" y="0.0" width="60" height="60"/>
-                                                <color key="backgroundColor" red="1" green="0.52156862749999999" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="5">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUd-O9-TjS">
-                                                <rect key="frame" x="180" y="0.0" width="60" height="60"/>
-                                                <color key="backgroundColor" red="0.86274509799999999" green="0.77647058820000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="uFp-qe-Fux"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="6">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" tag="7" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLE-C9-2pn">
-                                                <rect key="frame" x="270" y="0.0" width="60" height="60"/>
-                                                <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="7"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="7"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="r5G-Be-kHv">
-                                        <rect key="frame" x="0.0" y="90" width="330" height="60"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atY-OM-6kO">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                <color key="backgroundColor" red="0.60784313729999995" green="0.34901960780000002" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="8"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HM6-mC-vF9">
-                                                <rect key="frame" x="90" y="0.0" width="60" height="60"/>
-                                                <color key="backgroundColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="9"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySj-A2-6Qx">
-                                                <rect key="frame" x="180" y="0.0" width="60" height="60"/>
-                                                <color key="backgroundColor" red="0.58110542080000005" green="0.6912484217" blue="0.52918349490000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
-                                                <size key="titleShadowOffset" width="1" height="1"/>
-                                                <state key="normal" title="10"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcB-VB-6UJ">
-                                                <rect key="frame" x="270" y="0.0" width="60" height="60"/>
-                                                <color key="backgroundColor" red="0.20392156862745098" green="0.28627450980392155" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="RQX-og-ZJ3"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="11">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ivh-u0-RWg">
-                                        <rect key="frame" x="0.0" y="180" width="330" height="60"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxs-Qt-w6G">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                <color key="backgroundColor" red="0.99215686274509807" green="0.47450980392156861" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="12">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDf-Xa-27l">
-                                                <rect key="frame" x="90" y="0.0" width="60" height="60"/>
-                                                <color key="backgroundColor" red="0.71764705882352942" green="0.082352941176470587" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="13">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52w-ln-Lgt">
-                                                <rect key="frame" x="180" y="0.0" width="60" height="60"/>
-                                                <color key="backgroundColor" red="0.98039215686274506" green="0.82745098039215681" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="7"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="14"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okY-a0-wZs">
-                                                <rect key="frame" x="270" y="0.0" width="60" height="60"/>
-                                                <color key="backgroundColor" red="0.29019607843137252" green="0.41176470588235292" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="7"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="51S-yP-2RK"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="15"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick number of players to start" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IFt-aE-osb">
                                 <rect key="frame" x="87.5" y="216" width="200" height="78"/>
                                 <constraints>
@@ -314,18 +204,47 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sjv-AL-74G">
+                                <rect key="frame" x="16" y="384" width="343" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="gSO-40-N5M"/>
+                                </constraints>
+                            </pickerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DX2-5g-5i6" userLabel="Edit/Next buttons container View">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nI1-PH-hJY">
+                                        <rect key="frame" x="167.5" y="12.5" width="40" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="nI1-PH-hJY" firstAttribute="centerX" secondItem="DX2-5g-5i6" secondAttribute="centerX" id="I5l-db-VA3"/>
+                                    <constraint firstItem="nI1-PH-hJY" firstAttribute="centerY" secondItem="DX2-5g-5i6" secondAttribute="centerY" id="J6a-OT-28O"/>
+                                    <constraint firstAttribute="width" constant="375" id="e6F-CP-ToC"/>
+                                    <constraint firstAttribute="height" constant="60" id="ebZ-NE-cnp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="n1n-F5-B92" firstAttribute="leading" secondItem="kC5-YF-Jga" secondAttribute="leading" constant="23" id="5HX-Ld-ce6"/>
+                            <constraint firstItem="DX2-5g-5i6" firstAttribute="trailing" secondItem="kC5-YF-Jga" secondAttribute="trailing" id="7rE-0Y-KOk"/>
                             <constraint firstItem="IFt-aE-osb" firstAttribute="centerX" secondItem="3us-0U-5VX" secondAttribute="centerX" id="Bkn-hv-lRI"/>
+                            <constraint firstItem="Sjv-AL-74G" firstAttribute="leading" secondItem="3us-0U-5VX" secondAttribute="leadingMargin" id="JAa-P7-LVS"/>
+                            <constraint firstItem="DX2-5g-5i6" firstAttribute="bottom" secondItem="kC5-YF-Jga" secondAttribute="bottom" id="R5Z-Kc-8qs"/>
+                            <constraint firstItem="DX2-5g-5i6" firstAttribute="leading" secondItem="kC5-YF-Jga" secondAttribute="leading" id="fQV-bi-O1s"/>
+                            <constraint firstItem="Sjv-AL-74G" firstAttribute="top" secondItem="IFt-aE-osb" secondAttribute="bottom" constant="90" id="hhh-CJ-iur"/>
                             <constraint firstItem="IFt-aE-osb" firstAttribute="top" secondItem="kC5-YF-Jga" secondAttribute="top" constant="152" id="j0v-9n-Z5K"/>
-                            <constraint firstItem="n1n-F5-B92" firstAttribute="top" secondItem="IFt-aE-osb" secondAttribute="bottom" constant="82" id="vUZ-mV-vya"/>
-                            <constraint firstItem="kC5-YF-Jga" firstAttribute="trailing" secondItem="n1n-F5-B92" secondAttribute="trailing" constant="22" id="wLU-uz-PXL"/>
+                            <constraint firstItem="Sjv-AL-74G" firstAttribute="centerX" secondItem="IFt-aE-osb" secondAttribute="centerX" id="t6Z-Do-cNe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kC5-YF-Jga"/>
                     </view>
                     <connections>
+                        <outlet property="numberOfPlayersPicker" destination="Sjv-AL-74G" id="cd9-Wl-GFI"/>
                         <segue destination="CHC-RD-Tnx" kind="show" id="fUK-xT-BIq"/>
                     </connections>
                 </viewController>
@@ -351,30 +270,37 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZv-Gs-VFi" userLabel="Edit/Next buttons container View">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeQ-5D-Usd">
-                                        <rect key="frame" x="8" y="13" width="85" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptp-uQ-Eol">
+                                        <rect key="frame" x="327" y="12.5" width="40" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="Ak8-EC-5Hd"/>
+                                            <constraint firstAttribute="width" constant="40" id="MeQ-zr-4WI"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="Edit Roles">
+                                        <state key="normal" title="Next">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptp-uQ-Eol">
-                                        <rect key="frame" x="327" y="13" width="40" height="35"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-ms-plf">
+                                        <rect key="frame" x="8" y="12.5" width="85" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="85" id="AGe-gf-SNx"/>
+                                            <constraint firstAttribute="height" constant="35" id="KZD-HF-pNC"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="Next">
+                                        <state key="normal" title="Edit Roles">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="ptp-uQ-Eol" firstAttribute="trailing" secondItem="oZv-Gs-VFi" secondAttribute="trailingMargin" id="02A-f7-a1b"/>
-                                    <constraint firstItem="UeQ-5D-Usd" firstAttribute="top" secondItem="oZv-Gs-VFi" secondAttribute="top" constant="13" id="Dz0-hj-jAx"/>
+                                    <constraint firstAttribute="trailing" secondItem="ptp-uQ-Eol" secondAttribute="trailing" constant="8" id="5a3-Nk-4rT"/>
+                                    <constraint firstItem="rIL-ms-plf" firstAttribute="centerY" secondItem="oZv-Gs-VFi" secondAttribute="centerY" id="Hd2-AI-dGe"/>
                                     <constraint firstAttribute="width" constant="375" id="Myp-q6-Ls8"/>
-                                    <constraint firstItem="UeQ-5D-Usd" firstAttribute="leading" secondItem="oZv-Gs-VFi" secondAttribute="leadingMargin" id="QMa-Ro-4Lp"/>
-                                    <constraint firstItem="UeQ-5D-Usd" firstAttribute="top" secondItem="ptp-uQ-Eol" secondAttribute="top" id="YHu-kP-lAY"/>
-                                    <constraint firstItem="UeQ-5D-Usd" firstAttribute="centerY" secondItem="oZv-Gs-VFi" secondAttribute="centerY" id="oWk-rY-cxb"/>
+                                    <constraint firstItem="rIL-ms-plf" firstAttribute="leading" secondItem="oZv-Gs-VFi" secondAttribute="leading" constant="8" id="nFw-ge-xe4"/>
                                     <constraint firstAttribute="height" constant="60" id="osq-P7-fev"/>
+                                    <constraint firstItem="rIL-ms-plf" firstAttribute="baseline" secondItem="ptp-uQ-Eol" secondAttribute="baseline" id="vJh-tx-hkO"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -422,7 +348,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TYv-7z-qDH" userLabel="Players Joined Container View">
                                 <rect key="frame" x="112" y="249" width="151" height="97"/>
@@ -443,14 +369,23 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vg6-hf-fPb">
-                                <rect key="frame" x="164" y="535" width="46" height="30"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wRd-0M-uRs" userLabel="Edit/Next buttons container View">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Play"/>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6R-N9-fO5">
+                                        <rect key="frame" x="166" y="13" width="42" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="Start">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="608-Bj-due"/>
@@ -468,12 +403,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HU3-1E-M38">
-                                <rect key="frame" x="167" y="535" width="40" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Next"/>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lJY-1b-IhU">
                                 <rect key="frame" x="0.0" y="125" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -482,6 +411,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lI4-4P-KMh" userLabel="Edit/Next buttons container View">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbH-hy-4gd">
+                                        <rect key="frame" x="167" y="13" width="40" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="h4q-tR-qWm"/>

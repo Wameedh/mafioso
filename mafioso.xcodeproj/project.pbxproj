@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3597528218A7A2800B888BB /* HowToPlayTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3597527218A7A2800B888BB /* HowToPlayTVC.swift */; };
+		A359752B218A7EBD00B888BB /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A359752A218A7EBD00B888BB /* CustomCell.xib */; };
+		A359752D218A82B900B888BB /* HowToPlayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A359752C218A82B900B888BB /* HowToPlayData.swift */; };
+		A359752F218E79BE00B888BB /* HowToPlayDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A359752E218E79BE00B888BB /* HowToPlayDetailsVC.swift */; };
+		A3597531218EAF0600B888BB /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3597530218EAF0600B888BB /* UILabel.swift */; };
+		A36210072186AC9300FCC765 /* NumberOfPlayersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36210062186AC9300FCC765 /* NumberOfPlayersVC.swift */; };
+		A36210092187F06400FCC765 /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36210082187F06400FCC765 /* PlayerClass.swift */; };
 		A38E0143215DCCB900F041C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38E0142215DCCB900F041C7 /* AppDelegate.swift */; };
 		A38E0145215DCCB900F041C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38E0144215DCCB900F041C7 /* ViewController.swift */; };
 		A38E0148215DCCB900F041C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38E0146215DCCB900F041C7 /* Main.storyboard */; };
@@ -15,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A3597527218A7A2800B888BB /* HowToPlayTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayTVC.swift; sourceTree = "<group>"; };
+		A359752A218A7EBD00B888BB /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		A359752C218A82B900B888BB /* HowToPlayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayData.swift; sourceTree = "<group>"; };
+		A359752E218E79BE00B888BB /* HowToPlayDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayDetailsVC.swift; sourceTree = "<group>"; };
+		A3597530218EAF0600B888BB /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		A36210062186AC9300FCC765 /* NumberOfPlayersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfPlayersVC.swift; sourceTree = "<group>"; };
+		A36210082187F06400FCC765 /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
 		A38E013F215DCCB900F041C7 /* mafioso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mafioso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38E0142215DCCB900F041C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A38E0144215DCCB900F041C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A3597529218A7D6200B888BB /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A359752A218A7EBD00B888BB /* CustomCell.xib */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
 		A38E0136215DCCB900F041C7 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +88,7 @@
 		A38E0154215DCD0D00F041C7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A359752C218A82B900B888BB /* HowToPlayData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -75,6 +98,7 @@
 			children = (
 				A38E0146215DCCB900F041C7 /* Main.storyboard */,
 				A38E014B215DCCBB00F041C7 /* LaunchScreen.storyboard */,
+				A3597529218A7D6200B888BB /* Custom Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -84,6 +108,11 @@
 			children = (
 				A38E0142215DCCB900F041C7 /* AppDelegate.swift */,
 				A38E0144215DCCB900F041C7 /* ViewController.swift */,
+				A36210062186AC9300FCC765 /* NumberOfPlayersVC.swift */,
+				A36210082187F06400FCC765 /* PlayerClass.swift */,
+				A3597527218A7A2800B888BB /* HowToPlayTVC.swift */,
+				A359752E218E79BE00B888BB /* HowToPlayDetailsVC.swift */,
+				A3597530218EAF0600B888BB /* UILabel.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -148,6 +177,7 @@
 			files = (
 				A38E014D215DCCBB00F041C7 /* LaunchScreen.storyboard in Resources */,
 				A38E014A215DCCBB00F041C7 /* Assets.xcassets in Resources */,
+				A359752B218A7EBD00B888BB /* CustomCell.xib in Resources */,
 				A38E0148215DCCB900F041C7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,8 +189,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36210092187F06400FCC765 /* PlayerClass.swift in Sources */,
+				A3597531218EAF0600B888BB /* UILabel.swift in Sources */,
 				A38E0145215DCCB900F041C7 /* ViewController.swift in Sources */,
+				A359752F218E79BE00B888BB /* HowToPlayDetailsVC.swift in Sources */,
+				A3597528218A7A2800B888BB /* HowToPlayTVC.swift in Sources */,
+				A36210072186AC9300FCC765 /* NumberOfPlayersVC.swift in Sources */,
 				A38E0143215DCCB900F041C7 /* AppDelegate.swift in Sources */,
+				A359752D218A82B900B888BB /* HowToPlayData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
