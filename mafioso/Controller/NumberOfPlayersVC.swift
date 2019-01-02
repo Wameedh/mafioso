@@ -7,23 +7,28 @@
 //
 
 import UIKit
+import Firebase
 
 class NumberOfPlayersVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var randomColor: UIColor {
-        let hue : CGFloat = CGFloat(arc4random() % 256) / 256 // use 256 to get full range from 0.0 to 1.0
-        let saturation : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from white
-        let brightness : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from black
-        
-        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
-    }
+    lazy var functions = Functions.functions()
     
+    var randomColor: UIColor {
+            let hue : CGFloat = CGFloat(arc4random() % 256) / 256 // use 256 to get full range from 0.0 to 1.0
+            let saturation : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from white
+            let brightness : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from black
+        
+            return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+        }
     
     let numberOfPlayersArray = ["5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
-    
+    var numberOfPlayers = 5
+    var randomString = ""
     var colorArray = [UIColor]()
     
     @IBOutlet weak var numberOfPlayersPicker: UIPickerView!
+    @IBOutlet weak var nextButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +60,8 @@ class NumberOfPlayersVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
-        print(row + 5)
+        numberOfPlayers = row + 5
+        print(numberOfPlayers)
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -67,6 +72,51 @@ class NumberOfPlayersVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
     }
     
     
+    @IBAction func nextButtonPressed(_ sender: Any) {
+        
+        //TODO: Send the message to Firebase and save it in our database
+
+           // nextButton.isEnabled = false
+   // let gameDB = Database.database().reference().child(randomString)
+        
+        
+    //  let messageDictionary = ["Sender": "userTest", "MessageBody": "Masha Allah"]
+//
+//        for _ in 0 ..< numberOfPlayers {
+//
+//        gameDB.childByAutoId().setValue(messageDictionary){
+//                (error, reference) in
+//                if error != nil {
+//                    print(error!)
+//                }else {
+//                    print("Message saved successfully")
+//                }
+//          }
+//            }
+        
+    //self.nextButton.isEnabled = true
+        
+        functions.httpsCallable("addRandom").call(["numberOfPlayers": numberOfPlayers, "randomString": randomString]) { (result, error) in
+            if let error = error as NSError? {
+                if error.domain == FunctionsErrorDomain {
+                    let code = FunctionsErrorCode(rawValue: error.code)
+                    let message = error.localizedDescription
+                    let details = error.userInfo[FunctionsErrorDetailsKey]
+                }
+            }
+        }
+        
+        performSegue(withIdentifier: "playVC", sender: self)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "playVC"{
+            let destinationVC = segue.destination as? PlayVC
+            
+            destinationVC?.gameCode = randomString
+            
+            
+        }
+    }
     
 }
