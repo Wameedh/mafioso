@@ -12,7 +12,7 @@ import UIKit
 class HowToPlayTVC: UITableViewController {
     
 
-    var x: Int = 0
+    var selectedRow: Int = 0
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return howToPlayData.count
@@ -28,9 +28,7 @@ class HowToPlayTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Yayy!")
-        x = indexPath.row
-        print("first", x)
+        selectedRow = indexPath.row
         performSegue(withIdentifier: "howToPlayDetails", sender: nil)
     }
     
@@ -38,9 +36,7 @@ class HowToPlayTVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "howToPlayDetails" {
             if let vc = segue.destination as? HowToPlayDetailsVC {
-                print("Masha Allah!")
-                print(x)
-                vc.content = howToPlayData[x][1]
+                vc.content = howToPlayData[selectedRow][1]
                 
             }
             

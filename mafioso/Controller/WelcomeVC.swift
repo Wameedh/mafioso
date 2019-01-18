@@ -16,10 +16,10 @@ class WelcomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //If there is a logged in user, by pass this screen and go straight to ChatViewController
+        //If there is a logged in user, by pass this screen and go straight to new/join a game ViewController
         
         if Auth.auth().currentUser != nil {
-            performSegue(withIdentifier: "goToChat", sender: self)
+            self.performSegue(withIdentifier: "newJoinAGameVC", sender: self)
         }
         
     }

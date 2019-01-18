@@ -23,8 +23,9 @@ class NumberOfPlayersVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     let numberOfPlayersArray = ["5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
     var numberOfPlayers = 5
-    var randomString = ""
+//    var randomString = ""
     var colorArray = [UIColor]()
+    var gameCode = ""
     
     @IBOutlet weak var numberOfPlayersPicker: UIPickerView!
     @IBOutlet weak var nextButton: UIButton!
@@ -76,45 +77,34 @@ class NumberOfPlayersVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
         
         //TODO: Send the message to Firebase and save it in our database
 
-           // nextButton.isEnabled = false
-   // let gameDB = Database.database().reference().child(randomString)
-        
-        
-    //  let messageDictionary = ["Sender": "userTest", "MessageBody": "Masha Allah"]
-//
-//        for _ in 0 ..< numberOfPlayers {
-//
-//        gameDB.childByAutoId().setValue(messageDictionary){
-//                (error, reference) in
-//                if error != nil {
-//                    print(error!)
-//                }else {
-//                    print("Message saved successfully")
-//                }
-//          }
-//            }
-        
-    //self.nextButton.isEnabled = true
-        
-        functions.httpsCallable("addRandom").call(["numberOfPlayers": numberOfPlayers, "randomString": randomString]) { (result, error) in
+        nextButton.isEnabled = false
+        let data = ["numberOfPlayers": numberOfPlayers] as [String : Any]
+      
+        //handle error
+        functions.httpsCallable("addGame").call(data) { (result, error) in
             if let error = error as NSError? {
                 if error.domain == FunctionsErrorDomain {
-                    let code = FunctionsErrorCode(rawValue: error.code)
+                    let errorCode = FunctionsErrorCode(rawValue: error.code)
                     let message = error.localizedDescription
                     let details = error.userInfo[FunctionsErrorDetailsKey]
+                    print("\(String(describing: errorCode)) + \(message) + \(String(describing: details))")
                 }
             }
+            if let code = (result?.data as? [String: Any])?["gameCode"] as? String {
+                self.gameCode = code
+            }
+            self.performSegue(withIdentifier: "playVC", sender: self)
         }
         
-        performSegue(withIdentifier: "playVC", sender: self)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "playVC"{
             let destinationVC = segue.destination as? PlayVC
             
-            destinationVC?.gameCode = randomString
-            
+            destinationVC?.gameCode = gameCode
+             nextButton.isEnabled = true
             
         }
     }
