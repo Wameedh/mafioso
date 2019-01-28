@@ -22,10 +22,11 @@ class NumberOfPlayersVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
         }
     
     let numberOfPlayersArray = ["5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
+    
     var numberOfPlayers = 5
-//    var randomString = ""
     var colorArray = [UIColor]()
     var gameCode = ""
+    
     
     @IBOutlet weak var numberOfPlayersPicker: UIPickerView!
     @IBOutlet weak var nextButton: UIButton!
@@ -44,7 +45,7 @@ class NumberOfPlayersVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
     }
     
     
-    // 3 UIPickerView delegate methods here
+    // UIPickerView delegate methods here
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -62,7 +63,7 @@ class NumberOfPlayersVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         numberOfPlayers = row + 5
-        print(numberOfPlayers)
+       
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -88,12 +89,12 @@ class NumberOfPlayersVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
                     let message = error.localizedDescription
                     let details = error.userInfo[FunctionsErrorDetailsKey]
                     print("\(String(describing: errorCode)) + \(message) + \(String(describing: details))")
+                    self.nextButton.isEnabled = true
                 }
-            }
-            if let code = (result?.data as? [String: Any])?["gameCode"] as? String {
+            } else if let code = (result?.data as? [String: Any])?["gameCode"] as? String {
                 self.gameCode = code
+                self.performSegue(withIdentifier: "playVC", sender: self)
             }
-            self.performSegue(withIdentifier: "playVC", sender: self)
         }
         
         
@@ -104,6 +105,7 @@ class NumberOfPlayersVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
             let destinationVC = segue.destination as? PlayVC
             
             destinationVC?.gameCode = gameCode
+            destinationVC?.numberOfPlayers = numberOfPlayers
              nextButton.isEnabled = true
             
         }

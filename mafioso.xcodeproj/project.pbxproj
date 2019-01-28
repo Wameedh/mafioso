@@ -20,6 +20,8 @@
 		A316CE7121E0C825009BB66F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316CE7021E0C825009BB66F /* Game.swift */; };
 		A316CE7521E2FFF8009BB66F /* FirebaseDataMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316CE7421E2FFF8009BB66F /* FirebaseDataMode.swift */; };
 		A3241D9821D08AB200104FD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3241D9721D08AB200104FD3 /* GoogleService-Info.plist */; };
+		A357F2AB21F3CB35005A3EFD /* InGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357F2AA21F3CB35005A3EFD /* InGame.swift */; };
+		A357F2AD21F71119005A3EFD /* GameStartedTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357F2AC21F71119005A3EFD /* GameStartedTVC.swift */; };
 		A3597528218A7A2800B888BB /* HowToPlayTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3597527218A7A2800B888BB /* HowToPlayTVC.swift */; };
 		A359752B218A7EBD00B888BB /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A359752A218A7EBD00B888BB /* CustomCell.xib */; };
 		A359752D218A82B900B888BB /* HowToPlayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A359752C218A82B900B888BB /* HowToPlayData.swift */; };
@@ -27,6 +29,9 @@
 		A3597531218EAF0600B888BB /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3597530218EAF0600B888BB /* UILabel.swift */; };
 		A36210072186AC9300FCC765 /* NumberOfPlayersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36210062186AC9300FCC765 /* NumberOfPlayersVC.swift */; };
 		A36210092187F06400FCC765 /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36210082187F06400FCC765 /* PlayerClass.swift */; };
+		A37DF05B21F94AAB00B4D85C /* RolesDataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37DF05A21F94AAB00B4D85C /* RolesDataStructure.swift */; };
+		A37DF05E21FBE4A300B4D85C /* mafioso.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A37DF05C21FBE4A300B4D85C /* mafioso.xcdatamodeld */; };
+		A37DF06021FD3B1800B4D85C /* EditRolesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37DF05F21FD3B1800B4D85C /* EditRolesTableVC.swift */; };
 		A38E0143215DCCB900F041C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38E0142215DCCB900F041C7 /* AppDelegate.swift */; };
 		A38E0145215DCCB900F041C7 /* NewJoinAGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38E0144215DCCB900F041C7 /* NewJoinAGameVC.swift */; };
 		A38E0148215DCCB900F041C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38E0146215DCCB900F041C7 /* Main.storyboard */; };
@@ -51,6 +56,8 @@
 		A316CE7021E0C825009BB66F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A316CE7421E2FFF8009BB66F /* FirebaseDataMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataMode.swift; sourceTree = "<group>"; };
 		A3241D9721D08AB200104FD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A357F2AA21F3CB35005A3EFD /* InGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGame.swift; sourceTree = "<group>"; };
+		A357F2AC21F71119005A3EFD /* GameStartedTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartedTVC.swift; sourceTree = "<group>"; };
 		A3597527218A7A2800B888BB /* HowToPlayTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayTVC.swift; sourceTree = "<group>"; };
 		A359752A218A7EBD00B888BB /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		A359752C218A82B900B888BB /* HowToPlayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayData.swift; sourceTree = "<group>"; };
@@ -58,6 +65,9 @@
 		A3597530218EAF0600B888BB /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		A36210062186AC9300FCC765 /* NumberOfPlayersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfPlayersVC.swift; sourceTree = "<group>"; };
 		A36210082187F06400FCC765 /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
+		A37DF05A21F94AAB00B4D85C /* RolesDataStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RolesDataStructure.swift; sourceTree = "<group>"; };
+		A37DF05D21FBE4A300B4D85C /* mafioso.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mafioso.xcdatamodel; sourceTree = "<group>"; };
+		A37DF05F21FD3B1800B4D85C /* EditRolesTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRolesTableVC.swift; sourceTree = "<group>"; };
 		A38E013F215DCCB900F041C7 /* mafioso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mafioso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38E0142215DCCB900F041C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A38E0144215DCCB900F041C7 /* NewJoinAGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJoinAGameVC.swift; sourceTree = "<group>"; };
@@ -103,6 +113,8 @@
 			children = (
 				A36210062186AC9300FCC765 /* NumberOfPlayersVC.swift */,
 				A316CE5C21D8A0BA009BB66F /* PlayVC.swift */,
+				A357F2AC21F71119005A3EFD /* GameStartedTVC.swift */,
+				A37DF05F21FD3B1800B4D85C /* EditRolesTableVC.swift */,
 			);
 			name = "New Game";
 			sourceTree = "<group>";
@@ -111,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				A316CE5A21D204DF009BB66F /* JoinGameVC.swift */,
+				A357F2AA21F3CB35005A3EFD /* InGame.swift */,
 			);
 			name = "Join a Game";
 			sourceTree = "<group>";
@@ -170,6 +183,7 @@
 				A38E0155215DCD1700F041C7 /* View */,
 				A38E0156215DCD1D00F041C7 /* Controller */,
 				A38E0149215DCCBB00F041C7 /* Assets.xcassets */,
+				A37DF05C21FBE4A300B4D85C /* mafioso.xcdatamodeld */,
 				A38E014E215DCCBB00F041C7 /* Info.plist */,
 				A3241D9721D08AB200104FD3 /* GoogleService-Info.plist */,
 			);
@@ -186,6 +200,7 @@
 				A316CE6C21DDC439009BB66F /*  UserClass.swift */,
 				A316CE7021E0C825009BB66F /* Game.swift */,
 				A316CE7421E2FFF8009BB66F /* FirebaseDataMode.swift */,
+				A37DF05A21F94AAB00B4D85C /* RolesDataStructure.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -352,6 +367,8 @@
 				A36210092187F06400FCC765 /* PlayerClass.swift in Sources */,
 				A316CE6B21DDB834009BB66F /* ProfileTableVC.swift in Sources */,
 				A316CE6821DC6145009BB66F /* errorsEnum.swift in Sources */,
+				A37DF05E21FBE4A300B4D85C /* mafioso.xcdatamodeld in Sources */,
+				A37DF05B21F94AAB00B4D85C /* RolesDataStructure.swift in Sources */,
 				A3597531218EAF0600B888BB /* UILabel.swift in Sources */,
 				A316CE6621DC4882009BB66F /* LogInVC.swift in Sources */,
 				A316CE5D21D8A0BA009BB66F /* PlayVC.swift in Sources */,
@@ -362,13 +379,16 @@
 				A316CE6421DC4875009BB66F /* SginUpVC.swift in Sources */,
 				A359752F218E79BE00B888BB /* HowToPlayDetailsVC.swift in Sources */,
 				A316CE5F21D9A635009BB66F /* TextFieldExtension.swift in Sources */,
+				A357F2AD21F71119005A3EFD /* GameStartedTVC.swift in Sources */,
 				A3597528218A7A2800B888BB /* HowToPlayTVC.swift in Sources */,
 				A36210072186AC9300FCC765 /* NumberOfPlayersVC.swift in Sources */,
 				A316CE7121E0C825009BB66F /* Game.swift in Sources */,
 				A38E0143215DCCB900F041C7 /* AppDelegate.swift in Sources */,
 				A316CE6F21DE2E09009BB66F /* VCSwitcher.swift in Sources */,
 				A359752D218A82B900B888BB /* HowToPlayData.swift in Sources */,
+				A37DF06021FD3B1800B4D85C /* EditRolesTableVC.swift in Sources */,
 				A316CE5B21D204DF009BB66F /* JoinGameVC.swift in Sources */,
+				A357F2AB21F3CB35005A3EFD /* InGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +594,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A37DF05C21FBE4A300B4D85C /* mafioso.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A37DF05D21FBE4A300B4D85C /* mafioso.xcdatamodel */,
+			);
+			currentVersion = A37DF05D21FBE4A300B4D85C /* mafioso.xcdatamodel */;
+			path = mafioso.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A38E0137215DCCB900F041C7 /* Project object */;
 }

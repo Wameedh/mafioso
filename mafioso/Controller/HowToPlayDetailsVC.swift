@@ -18,7 +18,6 @@ class HowToPlayDetailsVC: UIViewController, UIScrollViewDelegate {
     
     
     override func viewDidLoad() {
-       // howToPlayDetailsLable.frame.size() = (self.view.frame.width - 40)
         howToPlayDetailsLable.widthAnchor.constraint(equalToConstant: self.view.frame.width - 40).isActive = true
         howToPlayDetailsLable.text = content
     }

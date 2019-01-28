@@ -8,20 +8,15 @@
 
 //  This is the model class that represents the blueprint for a player
 
-class Player {
+struct Player {
     
 //The status of the player is true if the player is alive which is the defulte value, and it is false if the player is dead
-    var name: String
-    var uid: String
-    var status: Bool = true
-    var role: String
+    var name: String = ""
+    var uid: String = ""
+    var status = true
+    var role: String = ""
+    var group: Int = 0
     
-    init(playerName: String, uid: String, status: Bool, role: String){
-        self.name = playerName
-        self.uid = uid
-        self.status = status
-        self.role = role
-    }
     
     func printInfo() {
         print("Player Name: \(self.name)")

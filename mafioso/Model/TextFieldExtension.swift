@@ -27,3 +27,18 @@ extension String {
         return NSString(string: self).boolValue
     }
 }
+
+func presentAlert(title: String, message: String, vc: UIViewController){
+    
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    
+    alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
+        vc.performSegue(withIdentifier: "unwindToNewJoinGame", sender: vc)
+    }))
+    
+    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+    
+    vc.present(alert, animated: true)
+}
+
+

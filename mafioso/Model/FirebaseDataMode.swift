@@ -9,7 +9,9 @@
 import UIKit
 import Firebase
 
-class FirebaseDataModel {
+class FirebaseDataModel: NSObject {
+    
+    var dataModeled = false
     
     var childPath: String
     var data: Game!
@@ -18,6 +20,7 @@ class FirebaseDataModel {
 
     init(childPath: String) {
         self.childPath = childPath
+        super.init()
         self.observer()
     }
     
@@ -26,34 +29,43 @@ class FirebaseDataModel {
     
      var playersArray = [Player]()
     
-        if let value = snapshot.value as? [String: AnyObject],
+        if let value = snapshot.value as? [String: AnyObject],let playersJoined = value["playersJoined"] as? Int,
             let gameCode = value["gameCode"] as? String,
             let players = value["players"] as? [AnyObject] {
             //Modling array of players that will be used for initilaizing
             
-            //loops over the players in the game
+            //loops over the players in the gamep
             for i in 0..<players.count {
-                if let status = players[i]["status"] as? String, let role = players[i]["role"] as? String, let name = players[i]["name"] as? String, let id = players[i]["id"] as? String
+                if let status = players[i]["status"] as? String, let role = players[i]["role"] as? String, let name = players[i]["name"] as? String, let id = players[i]["id"] as? String, let group = players[i]["group"] as? Int
                 {
                     print("MashaAllah")
-            
-                    playersArray.append(Player(playerName: name, uid: id, status: status.boolValueFromString(), role: role))
+                    
+                    var player: Player = Player()
+                    player.name = name
+                    player.role = role
+                    player.status = status.boolValueFromString()
+                    player.uid = id
+                    player.group = group
+                    playersArray.append(player)
                 }
             }
-            self.data = Game(gameCode: gameCode, player: playersArray)
+            self.data = Game(gameCode: gameCode, player: playersArray, playersJoined: playersJoined)
             
+        NotificationCenter.default.post(name: Notification.Name(rawValue: myNotificationKey), object: self)
+            dataModeled = true
         } else {
             print("Data has not been modeled!")
         }
         
     }
 
+    
     func observer() {
         Database.database().reference().child(childPath).observe(.value) { (snapshot) in
-            
             self.snap(snapshot: snapshot)
+            print("updated")
+            
         }
-        print(data)
     }
 
 //func addGame(game: Game){

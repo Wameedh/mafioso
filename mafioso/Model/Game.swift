@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+let myNotificationKey = "playersJoinedTheGameHasBeenUpdated"
 
 protocol FirebaseModel {
     //init?(snapshot: DataSnapshot)
@@ -17,21 +18,42 @@ protocol FirebaseModel {
 }
 
 
-struct Game: FirebaseModel {
+class Game {
     
     
     var players: [Player]
     var gameCode: String
+    var playersJoined: Int
     
-    
-    init(gameCode: String, player: [Player]) {
+    var innocentsGroup: [Player] = []
+    var mafiaGroup: [Player] = []
+    var othersGroup: [Player] = []
+
+    init(gameCode: String, player: [Player], playersJoined: Int) {
         self.players = player
         self.gameCode = gameCode
+        self.playersJoined = playersJoined
+        sortingPlayersInThreeGroups()
     }
+    
+    
+    private func sortingPlayersInThreeGroups() {
+        for player in players {
+            if player.group == 1 {
+                innocentsGroup.append(player)
+            } else if player.group == 2 {
+                mafiaGroup.append(player)
+            } else {
+                 othersGroup.append(player)
+            }
+        }
+    }
+    
     func toAnyObject() -> [String: Any] {
         return [
             "gameCode": gameCode,
-            "players": players
+            "players": players,
+            "playersJoined": playersJoined
         ]
     }
     
