@@ -46,12 +46,13 @@ class FirebaseDataModel: NSObject {
                     player.status = status.boolValueFromString()
                     player.uid = id
                     player.group = group
+                    player.indexOfselectedPlayerInTheDB = String(i)
                     playersArray.append(player)
                 }
             }
             self.data = Game(gameCode: gameCode, player: playersArray, playersJoined: playersJoined)
             
-        NotificationCenter.default.post(name: Notification.Name(rawValue: myNotificationKey), object: self)
+        NotificationCenter.default.post(name: .playersJoinedTheGameLabelHasBeenUpdated, object: self)
             dataModeled = true
         } else {
             print("Data has not been modeled!")
@@ -61,7 +62,7 @@ class FirebaseDataModel: NSObject {
 
     
     func observer() {
-        Database.database().reference().child(childPath).observe(.value) { (snapshot) in
+        Database.database().reference().child("Games").child(childPath).observe(.value) { (snapshot) in
             self.snap(snapshot: snapshot)
             print("updated")
             

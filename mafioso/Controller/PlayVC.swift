@@ -10,6 +10,7 @@ import UIKit
 
 class PlayVC: UIViewController {
 
+    @IBOutlet weak var editRolesButton: UIButton!
     
     @IBOutlet weak var gameCodeLable: UILabel!
     
@@ -24,16 +25,22 @@ class PlayVC: UIViewController {
     override func viewDidLoad() {
         gameCodeLable.text = gameCode
         dataModel = FirebaseDataModel(childPath: gameCode)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateplayersJoinedLableAfterNotified), name: NSNotification.Name(rawValue: myNotificationKey), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(updateplayersJoinedLableAfterNotified), name: .playersJoinedTheGameLabelHasBeenUpdated, object: nil)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        NotificationCenter.default.removeObserver(self)
+    }
     
     
    //Update the playersJoinedLable
     func updateLabel() {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
         self.playersJoinedLable.text = String(self.dataModel.data.playersJoined)
-            print(String(self.dataModel.data.playersJoined))
+        if self.dataModel.data.playersJoined == self.numberOfPlayers {
+            self.editRolesButton.isHidden = false
+        }
         }
     }
     
@@ -62,6 +69,7 @@ class PlayVC: UIViewController {
         
         if dataModel.data.playersJoined == numberOfPlayers {
             performSegue(withIdentifier: "gameStartedTVC", sender: self)
+            NotificationCenter.default.post(name: .userIsAlreadyInAGame, object: true)
         }
     }
     
@@ -73,7 +81,7 @@ class PlayVC: UIViewController {
             destinationVC?.game = dataModel.data
         }
         if segue.identifier == "editRolesTVC" {
-            let destinationVC = segue.destination as? EditRolesTVC
+            let destinationVC = segue.destination as? EditRolesTableVC
             
             destinationVC?.game = dataModel.data
         }

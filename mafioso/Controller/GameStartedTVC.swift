@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import Firebase
+
 class GameStartedTVC: UITableViewController {
     
     
     var game: Game!
     
+    //This array will be used to kick off all users from the game after the moderator termnate the game
+    var arrayOfUsersIds: [String] = []
     
     @IBOutlet weak var endGameButton: UIButton!
     
     
     override func viewDidLoad() {
         setPositionEndGameButton()
+        populateArrayOfUsersIds()
+        self.tableView.rowHeight = 50.0
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -36,6 +42,17 @@ class GameStartedTVC: UITableViewController {
         
     }
     
+    public override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40.0
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        //        header.backgroundView?.backgroundColor = .red
+        //        header.textLabel?.textColor = .yellow
+        header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+        
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
@@ -69,10 +86,15 @@ class GameStartedTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         print("Selected")
     }
     
+    //Populate the ArrayOfUsersIds with the ids of all users in the game
+    func populateArrayOfUsersIds(){
+        for i in self.game.players {
+            arrayOfUsersIds.append(i.uid)
+        }
+    }
     
     
     private func setPositionEndGameButton() {
@@ -85,9 +107,18 @@ class GameStartedTVC: UITableViewController {
         endGameButton.heightAnchor.constraint(equalToConstant: 50).isActive = true // specify the height of the view if you want
     }
 
+    
+     // MARK: - IBAction
     @IBAction func endGameButtonPressed(_ sender: Any) {
         
-        presentAlert(title: "String", message: "Message", vc: self)
+        presentAlert(title: "Are you sure you want to quit?", message: "That means you will terminate your role in the game",vc: self, action:
+            UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
+            self.performSegue(withIdentifier: "unwindToNewJoinGame", sender: self)
+        
+                for i in self.arrayOfUsersIds {
+        Database.database().reference().child("Users").child(i).removeValue()
+                }
+                }))
     }
     
 }

@@ -18,6 +18,7 @@ class LogInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Login"
         emailTextfield.setBottomBorder()
         passwordTextfield.setBottomBorder()
    

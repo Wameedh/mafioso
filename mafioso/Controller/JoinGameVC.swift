@@ -14,7 +14,7 @@ class JoinGameVC: UIViewController {
     
     lazy var functions = Functions.functions()
     
-    lazy var ref = Database.database().reference()
+    lazy var ref = Database.database().reference().child("Games")
     
     private var dataModel: FirebaseDataModel!
     
@@ -44,7 +44,7 @@ class JoinGameVC: UIViewController {
             let numberOfPlayersInGame = dataModel.data.playersJoined
             
             for i in 0..<playersArray.count {
-            //NOTE//updtat the for loop to exit as soon as it assign the player
+//NOTE//updtat the for loop to exit as soon as it assign the player
             if playersArray[i].uid == "none" && counter == 0 {
                player = playersArray[i]
                 guard let id = Auth.auth().currentUser?.uid else {
@@ -53,9 +53,15 @@ class JoinGameVC: UIViewController {
                 guard let name = Auth.auth().currentUser?.displayName else {
                     return
                 }
+                guard let uid = Auth.auth().currentUser?.uid else {
+                    return
+                }
+//Sets the game gode that user is part of in the reltime database. The user node contain childs, each child has its tile as the user id.
+    Database.database().reference().child("Users").child(uid).setValue(["gameCode": gamecode])
                 
-                ref.child(gamecode + "/players/" + String(i)).updateChildValues(["id": id, "name": name])
-                ref.child(gamecode).updateChildValues(["playersJoined": numberOfPlayersInGame + 1])
+                
+            ref.child(gamecode + "/players/" + String(i)).updateChildValues(["id": id, "name": name])
+            ref.child(gamecode).updateChildValues(["playersJoined": numberOfPlayersInGame + 1])
                 
                 counter = 1
             } else {
@@ -111,7 +117,9 @@ class JoinGameVC: UIViewController {
         if segue.identifier == "inGame" {
             let destinationVC = segue.destination as? InGameVC
             
-          destinationVC?.role = player.role
+          destinationVC?.player = player
+            destinationVC?.labelsStatus = true
+            destinationVC?.gameCode = dataModel.data.gameCode
 
     }
     

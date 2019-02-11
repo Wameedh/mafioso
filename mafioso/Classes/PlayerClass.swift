@@ -16,6 +16,7 @@ struct Player {
     var status = true
     var role: String = ""
     var group: Int = 0
+    var indexOfselectedPlayerInTheDB: String = ""
     
     
     func printInfo() {

@@ -58,3 +58,21 @@ let descriptionOfRoleData: [String: String] = [
 
 
 ]
+
+let waitingMessage: [String] = [
+"Hang around for the gang to join the game. 😎",
+"Wait for big daddy to start the game. 🤵🏻",
+"Wait for the lazy ones to join the game. 🤙",
+"Please don't cry, just wait for the moderator to start the game. 😜",
+"Please wait for the moderator to start the game. 😃",
+"Woah! Hold your horses there cowboy. Wait for the teammates to join. 🤠",
+"The rest of the mafia is joining. What to conspire. 😈",
+"Practice your killing moves while the rest of the group joins. 😈",
+"Hey Johnny wait for Tony. 😁",
+"Your so impatient! Wait for the others to join. 👻",
+"I know this is your favorite game so wait for the others to join. 😃",
+"The others took a later train. Wait for them to join. 🚂"
+
+
+
+]

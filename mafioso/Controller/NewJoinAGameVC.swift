@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class NewJoinAGameVC: UIViewController {
     
@@ -15,6 +16,7 @@ class NewJoinAGameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        VCSwitcher.checkIfUserIsPartOfAGame(rootViewController: self)
         RolesData.observer()
     }
     

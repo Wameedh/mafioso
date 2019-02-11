@@ -13,7 +13,7 @@
         <!--New/join a Game-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="newJoinGame" id="BYZ-38-t0r" userLabel="New/join a Game" customClass="NewJoinAGameVC" customModule="mafioso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="New/join a Game" customClass="NewJoinAGameVC" customModule="mafioso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1996" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1057" y="134"/>
         </scene>
         <!--Join GameVC-->
         <scene sceneID="HlS-51-mqN">
@@ -153,7 +153,7 @@
         <!--In GameVC-->
         <scene sceneID="B6M-6h-kW0">
             <objects>
-                <viewController id="8Vo-JV-UXs" customClass="InGameVC" customModule="mafioso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="786" id="8Vo-JV-UXs" customClass="InGameVC" customModule="mafioso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bO0-Yr-0nK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,7 +161,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="boT-1I-WTQ">
                                 <rect key="frame" x="0.0" y="157" width="375" height="326"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Role -" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmO-a9-ubC">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Role -" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmO-a9-ubC">
                                         <rect key="frame" x="8" y="19" width="60" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="2bE-io-00P"/>
@@ -170,7 +170,7 @@
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="23"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Innocent" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvI-aG-Z69">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Innocent" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvI-aG-Z69">
                                         <rect key="frame" x="19" y="65" width="74.5" height="23"/>
                                         <color key="backgroundColor" red="1" green="1" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -180,13 +180,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fy-XT-Rv3">
-                                        <rect key="frame" x="19" y="102" width="348" height="91"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fy-XT-Rv3">
+                                        <rect key="frame" x="19" y="102" width="348" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" id="X5u-fN-GhM"/>
                                         </constraints>
-                                        <string key="text">Also known as the “townspeople,” these players only know the number of
-Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -233,8 +231,9 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                     </view>
                     <connections>
                         <outlet property="descriptionOfRoleLabel" destination="2Fy-XT-Rv3" id="SlR-3o-Bz8"/>
+                        <outlet property="roleHeaderLabel" destination="gmO-a9-ubC" id="rmb-1J-9Z9"/>
                         <outlet property="roleLabel" destination="qvI-aG-Z69" id="aHY-v7-dmF"/>
-                        <segue destination="Xud-Tv-Zpy" kind="unwind" identifier="unwindToNewJoinGame" unwindAction="unwindToNewJoinGameViewWithSegue:" id="IlU-ay-IiU"/>
+                        <segue destination="Xud-Tv-Zpy" kind="unwind" identifier="unwindToNewJoinGame" customClass="UIStoryboardSegueWithCompletion" customModule="mafioso" customModuleProvider="target" unwindAction="unwindToNewJoinGameViewWithSegue:" id="IlU-ay-IiU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fIR-yD-N3Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -299,7 +298,7 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5jl-29-lvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1781" y="-708"/>
+            <point key="canvasLocation" x="1057" y="-743"/>
         </scene>
         <!--How to Play TVC-->
         <scene sceneID="6hs-rh-ztg">
@@ -330,7 +329,7 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FV7-75-th1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2786" y="-707"/>
+            <point key="canvasLocation" x="2178" y="-743"/>
         </scene>
         <!--How To Play DetailsVC-->
         <scene sceneID="enR-Wl-SK9">
@@ -374,7 +373,7 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tGz-dj-6UT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3622" y="-707"/>
+            <point key="canvasLocation" x="2177" y="-1461"/>
         </scene>
         <!--Number of players View Controller-->
         <scene sceneID="daZ-dH-GMm">
@@ -443,7 +442,7 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJc-IL-gha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3095.1999999999998" y="133.5832083958021"/>
+            <point key="canvasLocation" x="2177" y="134"/>
         </scene>
         <!--Roles Explanition View Controller-->
         <scene sceneID="FYA-fE-kc1">
@@ -512,7 +511,7 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gj1-3m-Zaf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4260" y="824"/>
+            <point key="canvasLocation" x="4263" y="1403"/>
         </scene>
         <!--Play View Controller-->
         <scene sceneID="uJr-Uj-a7d">
@@ -600,9 +599,12 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                                     <constraint firstItem="o6R-N9-fO5" firstAttribute="centerY" secondItem="wRd-0M-uRs" secondAttribute="centerY" id="SK5-Vi-pyr"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmU-Q5-Kiu">
-                                <rect key="frame" x="145" y="354" width="85" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmU-Q5-Kiu">
+                                <rect key="frame" x="145" y="448" width="85" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="1FD-Rh-AmN"/>
+                                    <constraint firstAttribute="width" constant="85" id="f0X-GE-HSy"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Edit Roles">
                                     <color key="titleColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -615,9 +617,12 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wRd-0M-uRs" firstAttribute="leading" secondItem="608-Bj-due" secondAttribute="leading" id="0Wv-6W-fQy"/>
+                            <constraint firstItem="fmU-Q5-Kiu" firstAttribute="top" secondItem="TYv-7z-qDH" secondAttribute="bottom" constant="102" id="2bF-4h-LjL"/>
+                            <constraint firstItem="608-Bj-due" firstAttribute="trailing" secondItem="fmU-Q5-Kiu" secondAttribute="trailing" constant="145" id="Etq-Mo-tuT"/>
                             <constraint firstItem="5Yq-KD-DHP" firstAttribute="top" secondItem="608-Bj-due" secondAttribute="top" constant="37" id="IBS-II-v24"/>
                             <constraint firstItem="TYv-7z-qDH" firstAttribute="centerX" secondItem="wRd-0M-uRs" secondAttribute="centerX" id="QCM-Wb-Kn3"/>
                             <constraint firstItem="TYv-7z-qDH" firstAttribute="top" secondItem="5Yq-KD-DHP" secondAttribute="bottom" constant="49" id="U5a-cO-T6f"/>
+                            <constraint firstItem="fmU-Q5-Kiu" firstAttribute="leading" secondItem="608-Bj-due" secondAttribute="leading" constant="145" id="fw5-Z0-UD5"/>
                             <constraint firstItem="wRd-0M-uRs" firstAttribute="trailing" secondItem="608-Bj-due" secondAttribute="trailing" id="qNn-ki-uJb"/>
                             <constraint firstItem="wRd-0M-uRs" firstAttribute="bottom" secondItem="608-Bj-due" secondAttribute="bottom" id="tpv-bK-gFz"/>
                             <constraint firstItem="5Yq-KD-DHP" firstAttribute="centerX" secondItem="TYv-7z-qDH" secondAttribute="centerX" id="uFl-Uf-bcD"/>
@@ -625,6 +630,7 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                         <viewLayoutGuide key="safeArea" id="608-Bj-due"/>
                     </view>
                     <connections>
+                        <outlet property="editRolesButton" destination="fmU-Q5-Kiu" id="w1L-9X-hFM"/>
                         <outlet property="gameCodeLable" destination="OXY-au-ZJJ" id="znG-nQ-OEF"/>
                         <outlet property="playersJoinedLable" destination="mAj-z7-Jcj" id="scP-bE-MPI"/>
                         <segue destination="Hxv-ib-O7x" kind="presentation" identifier="gameStartedTVC" id="HVJ-Dc-Rcx"/>
@@ -633,7 +639,7 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHh-v4-t4C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4412" y="133.5832083958021"/>
+            <point key="canvasLocation" x="3436" y="134"/>
         </scene>
         <!--Moderator View Controller-->
         <scene sceneID="ugr-tb-urp">
@@ -673,7 +679,7 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5u3-Fj-98P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5193" y="824"/>
+            <point key="canvasLocation" x="5170" y="1388"/>
         </scene>
         <!--Edit Roles TableVC-->
         <scene sceneID="bjV-8r-ab9">
@@ -692,16 +698,16 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZOl-IT-a4E">
-                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="16" y="12" width="31.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OrS-bj-WtV">
-                                            <rect key="frame" x="296" y="12" width="44" height="20.5"/>
+                                            <rect key="frame" x="298.5" y="12" width="41.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -714,10 +720,45 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                             <outlet property="delegate" destination="8kZ-pQ-37M" id="nRQ-nT-qqb"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="PYs-tP-Tyl" kind="show" identifier="toSelectingRoleTVC" id="5Dq-Fs-1XC"/>
+                        <segue destination="VhN-em-Z0S" kind="show" identifier="fromEditeRolesVCToHowToPlayDetails" id="5aS-ws-ZEx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yv0-Bh-Hxg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5329" y="-599"/>
+            <point key="canvasLocation" x="3969" y="-596"/>
+        </scene>
+        <!--Table View Controller For Selecting Role-->
+        <scene sceneID="3KF-fR-O0L">
+            <objects>
+                <tableViewController id="PYs-tP-Tyl" customClass="TableViewControllerForSelectingRole" customModule="mafioso" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9Cd-R8-9u3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="slectingRoleCell" id="T8m-Ve-07X">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T8m-Ve-07X" id="xnO-FU-hnd">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PYs-tP-Tyl" id="9DZ-Sf-KdZ"/>
+                            <outlet property="delegate" destination="PYs-tP-Tyl" id="4kB-uV-0uD"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="mQj-Wp-IEa" kind="show" identifier="fromSelectingRolesToHowToPlayDetails" id="Bp3-Is-WD4"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ol-hW-Q5R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4134" y="-1359"/>
         </scene>
         <!--Game StartedTVC-->
         <scene sceneID="RWS-qG-ZYk">
@@ -740,24 +781,24 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                             </connections>
                         </button>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameStartedTVCCell" textLabel="lgY-d7-aRc" detailTextLabel="Yb3-XE-tqc" style="IBUITableViewCellStyleValue2" id="27y-je-v9C">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="GameStartedTVCCell" textLabel="lgY-d7-aRc" detailTextLabel="23o-vQ-6yS" style="IBUITableViewCellStyleValue1" id="27y-je-v9C">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="27y-je-v9C" id="poZ-WA-eIk">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lgY-d7-aRc">
-                                            <rect key="frame" x="16" y="14" width="91" height="16"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lgY-d7-aRc">
+                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yb3-XE-tqc">
-                                            <rect key="frame" x="113" y="14" width="35" height="16"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="23o-vQ-6yS">
+                                            <rect key="frame" x="300" y="12" width="59" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -778,41 +819,39 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1Z-by-aNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4JV-n0-tBw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5329" y="134"/>
+            <point key="canvasLocation" x="4743" y="134"/>
         </scene>
         <!--Welcome-->
         <scene sceneID="Ri9-Px-Pl4">
             <objects>
-                <viewController id="9wp-R4-8h6" userLabel="Welcome" customClass="WelcomeVC" customModule="mafioso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeVC" id="9wp-R4-8h6" userLabel="Welcome" customClass="WelcomeVC" customModule="mafioso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SQv-hs-cyZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MG0-TV-uTC">
-                                <rect key="frame" x="16" y="478" width="343" height="50"/>
-                                <color key="backgroundColor" red="0.12941176470588234" green="0.74509803921568629" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="97" y="486" width="181" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="LXj-2G-Uhf"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="343" id="TMT-5S-xu8"/>
+                                    <constraint firstAttribute="height" constant="35" id="LXj-2G-Uhf"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="181" id="TMT-5S-xu8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Sign up with an Email">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.12941176469999999" green="0.74509803919999995" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="RQm-FJ-jct" kind="show" identifier="sginUpVC" id="8AT-zA-LwN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZP-3t-Zem">
-                                <rect key="frame" x="16" y="556" width="343" height="50"/>
-                                <color key="backgroundColor" red="0.1803921568627451" green="0.69411764705882351" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="164" y="534" width="47" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Iv2-Ei-ICx"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="343" id="Xza-TR-ZRF"/>
+                                    <constraint firstAttribute="height" constant="35" id="Iv2-Ei-ICx"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="Xza-TR-ZRF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="juc-I4-Bed" kind="show" identifier="loginVC" id="9fe-xK-xxT"/>
@@ -821,12 +860,12 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qZP-3t-Zem" firstAttribute="leading" secondItem="DUq-wv-PRE" secondAttribute="leading" constant="16" id="3gp-1O-aQo"/>
-                            <constraint firstItem="DUq-wv-PRE" firstAttribute="trailing" secondItem="qZP-3t-Zem" secondAttribute="trailing" constant="16" id="Kri-8z-bQd"/>
-                            <constraint firstItem="qZP-3t-Zem" firstAttribute="top" secondItem="MG0-TV-uTC" secondAttribute="bottom" constant="28" id="chC-NJ-CYO"/>
-                            <constraint firstItem="DUq-wv-PRE" firstAttribute="trailing" secondItem="MG0-TV-uTC" secondAttribute="trailing" constant="16" id="j5f-lE-dli"/>
-                            <constraint firstItem="MG0-TV-uTC" firstAttribute="top" secondItem="DUq-wv-PRE" secondAttribute="top" constant="414" id="kdM-BR-a2d"/>
-                            <constraint firstItem="MG0-TV-uTC" firstAttribute="leading" secondItem="DUq-wv-PRE" secondAttribute="leading" constant="16" id="plu-F0-ISd"/>
+                            <constraint firstItem="qZP-3t-Zem" firstAttribute="leading" secondItem="DUq-wv-PRE" secondAttribute="leading" constant="164" id="3gp-1O-aQo"/>
+                            <constraint firstItem="DUq-wv-PRE" firstAttribute="trailing" secondItem="qZP-3t-Zem" secondAttribute="trailing" constant="164" id="Kri-8z-bQd"/>
+                            <constraint firstItem="qZP-3t-Zem" firstAttribute="top" secondItem="MG0-TV-uTC" secondAttribute="bottom" constant="13" id="chC-NJ-CYO"/>
+                            <constraint firstItem="DUq-wv-PRE" firstAttribute="trailing" secondItem="MG0-TV-uTC" secondAttribute="trailing" constant="97" id="j5f-lE-dli"/>
+                            <constraint firstItem="MG0-TV-uTC" firstAttribute="top" secondItem="DUq-wv-PRE" secondAttribute="top" constant="422" id="kdM-BR-a2d"/>
+                            <constraint firstItem="MG0-TV-uTC" firstAttribute="leading" secondItem="DUq-wv-PRE" secondAttribute="leading" constant="97" id="plu-F0-ISd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DUq-wv-PRE"/>
                     </view>
@@ -837,7 +876,7 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daw-xr-JOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2186" y="134"/>
+            <point key="canvasLocation" x="-1921" y="187"/>
         </scene>
         <!--Log In-->
         <scene sceneID="uJm-Uj-itT">
@@ -905,7 +944,7 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3CW-Vq-cmy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-962.39999999999998" y="775.86206896551732"/>
+            <point key="canvasLocation" x="-1922" y="1080"/>
         </scene>
         <!--Sgin Up-->
         <scene sceneID="nID-pM-cpk">
@@ -1023,12 +1062,12 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mU6-jQ-Fkd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-999" y="-302"/>
+            <point key="canvasLocation" x="-1922" y="-681"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bUO-jO-dol">
             <objects>
-                <navigationController storyboardIdentifier="welcomeVC" automaticallyAdjustsScrollViewInsets="NO" id="HYC-Hb-cyA" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HYC-Hb-cyA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="osx-yg-QVX">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1046,7 +1085,7 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
         <!--Navigation Controller-->
         <scene sceneID="XyC-JM-sII">
             <objects>
-                <navigationController storyboardIdentifier="newJoinAGameVC" automaticallyAdjustsScrollViewInsets="NO" id="Vq3-Of-tIO" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="newJoinGame" automaticallyAdjustsScrollViewInsets="NO" id="Vq3-Of-tIO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xsM-Uv-Ze5">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1060,10 +1099,12 @@ Mafiosi in the game. There are fewer Innocents than Mafia members.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4oC-WX-dPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056.8" y="133.5832083958021"/>
+            <point key="canvasLocation" x="-350" y="134"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0Na-gK-OlN"/>
+        <segue reference="MGe-Ma-1z3"/>
+        <segue reference="Bp3-Is-WD4"/>
+        <segue reference="cf8-BQ-YPS"/>
     </inferredMetricsTieBreakers>
 </document>

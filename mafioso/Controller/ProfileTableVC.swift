@@ -37,7 +37,7 @@ class ProfileTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserInfoArray.count
+        return user.arrayOfUserAttributes.count
     }
     
     
@@ -62,7 +62,7 @@ class ProfileTableVC: UITableViewController {
         let currentUser = Auth.auth().currentUser!
        
         if let name = currentUser.displayName, let email = currentUser.email {
-            user = User(name: name, email: email)
+            user = User(name: name, email: email, gameCode: "")
             UserInfoArray = user.UserInfoArray()
         } else {
             print("No User info!!")

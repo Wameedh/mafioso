@@ -32,6 +32,11 @@
 		A37DF05B21F94AAB00B4D85C /* RolesDataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37DF05A21F94AAB00B4D85C /* RolesDataStructure.swift */; };
 		A37DF05E21FBE4A300B4D85C /* mafioso.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A37DF05C21FBE4A300B4D85C /* mafioso.xcdatamodeld */; };
 		A37DF06021FD3B1800B4D85C /* EditRolesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37DF05F21FD3B1800B4D85C /* EditRolesTableVC.swift */; };
+		A37DF06222000DDB00B4D85C /* NotificationKeysExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37DF06122000DDB00B4D85C /* NotificationKeysExtension.swift */; };
+		A37DF064220CF21C00B4D85C /* UIStoryboardSegueWithCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37DF063220CF21C00B4D85C /* UIStoryboardSegueWithCompletion.swift */; };
+		A381B55B220EABDE00829301 /* TableViewControllerForSelectingRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381B55A220EABDE00829301 /* TableViewControllerForSelectingRole.swift */; };
+		A3896DE422111366000607B7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3896DE322111366000607B7 /* StringExtension.swift */; };
+		A3896DE8221113DA000607B7 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3896DE7221113DA000607B7 /* Functions.swift */; };
 		A38E0143215DCCB900F041C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38E0142215DCCB900F041C7 /* AppDelegate.swift */; };
 		A38E0145215DCCB900F041C7 /* NewJoinAGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38E0144215DCCB900F041C7 /* NewJoinAGameVC.swift */; };
 		A38E0148215DCCB900F041C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38E0146215DCCB900F041C7 /* Main.storyboard */; };
@@ -68,6 +73,11 @@
 		A37DF05A21F94AAB00B4D85C /* RolesDataStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RolesDataStructure.swift; sourceTree = "<group>"; };
 		A37DF05D21FBE4A300B4D85C /* mafioso.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mafioso.xcdatamodel; sourceTree = "<group>"; };
 		A37DF05F21FD3B1800B4D85C /* EditRolesTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRolesTableVC.swift; sourceTree = "<group>"; };
+		A37DF06122000DDB00B4D85C /* NotificationKeysExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeysExtension.swift; sourceTree = "<group>"; };
+		A37DF063220CF21C00B4D85C /* UIStoryboardSegueWithCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboardSegueWithCompletion.swift; sourceTree = "<group>"; };
+		A381B55A220EABDE00829301 /* TableViewControllerForSelectingRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerForSelectingRole.swift; sourceTree = "<group>"; };
+		A3896DE322111366000607B7 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		A3896DE7221113DA000607B7 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		A38E013F215DCCB900F041C7 /* mafioso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mafioso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38E0142215DCCB900F041C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A38E0144215DCCB900F041C7 /* NewJoinAGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJoinAGameVC.swift; sourceTree = "<group>"; };
@@ -113,8 +123,9 @@
 			children = (
 				A36210062186AC9300FCC765 /* NumberOfPlayersVC.swift */,
 				A316CE5C21D8A0BA009BB66F /* PlayVC.swift */,
-				A357F2AC21F71119005A3EFD /* GameStartedTVC.swift */,
 				A37DF05F21FD3B1800B4D85C /* EditRolesTableVC.swift */,
+				A381B55A220EABDE00829301 /* TableViewControllerForSelectingRole.swift */,
+				A357F2AC21F71119005A3EFD /* GameStartedTVC.swift */,
 			);
 			name = "New Game";
 			sourceTree = "<group>";
@@ -133,7 +144,6 @@
 			children = (
 				A3597527218A7A2800B888BB /* HowToPlayTVC.swift */,
 				A359752E218E79BE00B888BB /* HowToPlayDetailsVC.swift */,
-				A3597530218EAF0600B888BB /* UILabel.swift */,
 			);
 			name = "Howto Play";
 			sourceTree = "<group>";
@@ -144,7 +154,6 @@
 				A316CE6121DC43A0009BB66F /* WelcomeVC.swift */,
 				A316CE6321DC4875009BB66F /* SginUpVC.swift */,
 				A316CE6521DC4882009BB66F /* LogInVC.swift */,
-				A316CE6E21DE2E09009BB66F /* VCSwitcher.swift */,
 			);
 			name = "Sgin in /Sgin up VC's";
 			sourceTree = "<group>";
@@ -155,6 +164,38 @@
 				A359752A218A7EBD00B888BB /* CustomCell.xib */,
 			);
 			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
+		A3896DE1221112C2000607B7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A37DF063220CF21C00B4D85C /* UIStoryboardSegueWithCompletion.swift */,
+				A316CE7021E0C825009BB66F /* Game.swift */,
+				A36210082187F06400FCC765 /* PlayerClass.swift */,
+				A316CE6E21DE2E09009BB66F /* VCSwitcher.swift */,
+				A316CE6C21DDC439009BB66F /*  UserClass.swift */,
+				A316CE6721DC6145009BB66F /* errorsEnum.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A3896DE22211130A000607B7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A37DF06122000DDB00B4D85C /* NotificationKeysExtension.swift */,
+				A316CE5E21D9A635009BB66F /* TextFieldExtension.swift */,
+				A3896DE322111366000607B7 /* StringExtension.swift */,
+				A3597530218EAF0600B888BB /* UILabel.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A3896DE522111396000607B7 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				A3896DE7221113DA000607B7 /* Functions.swift */,
+			);
+			path = Functions;
 			sourceTree = "<group>";
 		};
 		A38E0136215DCCB900F041C7 = {
@@ -178,11 +219,14 @@
 		A38E0141215DCCB900F041C7 /* mafioso */ = {
 			isa = PBXGroup;
 			children = (
-				A316CE6921DCD5CC009BB66F /* mafioso.entitlements */,
+				A3896DE522111396000607B7 /* Functions */,
+				A3896DE22211130A000607B7 /* Extensions */,
+				A3896DE1221112C2000607B7 /* Classes */,
 				A38E0154215DCD0D00F041C7 /* Model */,
 				A38E0155215DCD1700F041C7 /* View */,
 				A38E0156215DCD1D00F041C7 /* Controller */,
 				A38E0149215DCCBB00F041C7 /* Assets.xcassets */,
+				A316CE6921DCD5CC009BB66F /* mafioso.entitlements */,
 				A37DF05C21FBE4A300B4D85C /* mafioso.xcdatamodeld */,
 				A38E014E215DCCBB00F041C7 /* Info.plist */,
 				A3241D9721D08AB200104FD3 /* GoogleService-Info.plist */,
@@ -194,11 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				A359752C218A82B900B888BB /* HowToPlayData.swift */,
-				A36210082187F06400FCC765 /* PlayerClass.swift */,
-				A316CE5E21D9A635009BB66F /* TextFieldExtension.swift */,
-				A316CE6721DC6145009BB66F /* errorsEnum.swift */,
-				A316CE6C21DDC439009BB66F /*  UserClass.swift */,
-				A316CE7021E0C825009BB66F /* Game.swift */,
 				A316CE7421E2FFF8009BB66F /* FirebaseDataMode.swift */,
 				A37DF05A21F94AAB00B4D85C /* RolesDataStructure.swift */,
 			);
@@ -368,6 +407,7 @@
 				A316CE6B21DDB834009BB66F /* ProfileTableVC.swift in Sources */,
 				A316CE6821DC6145009BB66F /* errorsEnum.swift in Sources */,
 				A37DF05E21FBE4A300B4D85C /* mafioso.xcdatamodeld in Sources */,
+				A37DF064220CF21C00B4D85C /* UIStoryboardSegueWithCompletion.swift in Sources */,
 				A37DF05B21F94AAB00B4D85C /* RolesDataStructure.swift in Sources */,
 				A3597531218EAF0600B888BB /* UILabel.swift in Sources */,
 				A316CE6621DC4882009BB66F /* LogInVC.swift in Sources */,
@@ -375,14 +415,18 @@
 				A316CE6221DC43A0009BB66F /* WelcomeVC.swift in Sources */,
 				A316CE7521E2FFF8009BB66F /* FirebaseDataMode.swift in Sources */,
 				A38E0145215DCCB900F041C7 /* NewJoinAGameVC.swift in Sources */,
+				A3896DE422111366000607B7 /* StringExtension.swift in Sources */,
 				A316CE6D21DDC439009BB66F /*  UserClass.swift in Sources */,
 				A316CE6421DC4875009BB66F /* SginUpVC.swift in Sources */,
 				A359752F218E79BE00B888BB /* HowToPlayDetailsVC.swift in Sources */,
+				A381B55B220EABDE00829301 /* TableViewControllerForSelectingRole.swift in Sources */,
+				A37DF06222000DDB00B4D85C /* NotificationKeysExtension.swift in Sources */,
 				A316CE5F21D9A635009BB66F /* TextFieldExtension.swift in Sources */,
 				A357F2AD21F71119005A3EFD /* GameStartedTVC.swift in Sources */,
 				A3597528218A7A2800B888BB /* HowToPlayTVC.swift in Sources */,
 				A36210072186AC9300FCC765 /* NumberOfPlayersVC.swift in Sources */,
 				A316CE7121E0C825009BB66F /* Game.swift in Sources */,
+				A3896DE8221113DA000607B7 /* Functions.swift in Sources */,
 				A38E0143215DCCB900F041C7 /* AppDelegate.swift in Sources */,
 				A316CE6F21DE2E09009BB66F /* VCSwitcher.swift in Sources */,
 				A359752D218A82B900B888BB /* HowToPlayData.swift in Sources */,
