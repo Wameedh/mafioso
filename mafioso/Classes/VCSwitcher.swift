@@ -17,10 +17,10 @@ class VCSwitcher {
         var rootVC : UIViewController
         
         
-        if(status != nil){
+        if (status != nil) {
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newJoinGame") as! UINavigationController
         }else{
-            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "welcomeVC") as! WelcomeVC
+        rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "welcomeVC") as! UINavigationController
         }
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -31,16 +31,17 @@ class VCSwitcher {
     
     
     private static func getCurrentPlayer(dataModel: FirebaseDataModel) -> Player {
-        var playersArray = dataModel.data.players
         var player: Player = Player()
-        for i in 0..<playersArray.count {
-            //NOTE//updtat the for loop to exit as soon as it assign the player
-            if playersArray[i].uid == Auth.auth().currentUser?.uid {
-                player = playersArray[i]
-                print(player)
-                break
+        let playersArray =  dataModel.data.players
+        
+            for i in 0..<playersArray.count {
+                //NOTE//updtat the for loop to exit as soon as it assign the player
+                if playersArray[i].uid == Auth.auth().currentUser?.uid {
+                    player = playersArray[i]
+                    print(player)
+                    break
+                }
             }
-        }
         
             return player
     }
@@ -64,13 +65,21 @@ class VCSwitcher {
                 if let gameCode = value["gameCode"] as? String {
                     
                     let dataModel = FirebaseDataModel(childPath: gameCode)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         let player = getCurrentPlayer(dataModel: dataModel)
-                        
+                        let gameStarted = dataModel.data.gameStarted
                         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "786") as! InGameVC
                         
                 rootViewController.present(vc, animated: true, completion: nil)
-                NotificationCenter.default.post(name: .userIsAlreadyInAGame, object: player)
+                    NotificationCenter.default.post(name: .notifyUsersInGame, object: ["player": player, "gameStarted": gameStarted, "gameCode": gameCode])
+                    }
+                } else if let moderator = value["moderator"] as? String {
+                    let dataModel = FirebaseDataModel(childPath: moderator)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    
+                     let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gameStartedTVC") as! GameStartedTVC
+                        vc.game = dataModel.data
+                        rootViewController.present(vc, animated: true, completion: nil)
                     }
                 }
             }
@@ -85,3 +94,4 @@ class VCSwitcher {
     
     
 }
+

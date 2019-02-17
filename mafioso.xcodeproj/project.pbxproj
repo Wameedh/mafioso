@@ -19,11 +19,11 @@
 		A316CE6F21DE2E09009BB66F /* VCSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316CE6E21DE2E09009BB66F /* VCSwitcher.swift */; };
 		A316CE7121E0C825009BB66F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316CE7021E0C825009BB66F /* Game.swift */; };
 		A316CE7521E2FFF8009BB66F /* FirebaseDataMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316CE7421E2FFF8009BB66F /* FirebaseDataMode.swift */; };
+		A31C5FD02217D99800C49714 /* PuplicVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C5FCF2217D99800C49714 /* PuplicVariables.swift */; };
 		A3241D9821D08AB200104FD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3241D9721D08AB200104FD3 /* GoogleService-Info.plist */; };
 		A357F2AB21F3CB35005A3EFD /* InGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357F2AA21F3CB35005A3EFD /* InGame.swift */; };
 		A357F2AD21F71119005A3EFD /* GameStartedTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357F2AC21F71119005A3EFD /* GameStartedTVC.swift */; };
 		A3597528218A7A2800B888BB /* HowToPlayTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3597527218A7A2800B888BB /* HowToPlayTVC.swift */; };
-		A359752B218A7EBD00B888BB /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A359752A218A7EBD00B888BB /* CustomCell.xib */; };
 		A359752D218A82B900B888BB /* HowToPlayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A359752C218A82B900B888BB /* HowToPlayData.swift */; };
 		A359752F218E79BE00B888BB /* HowToPlayDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A359752E218E79BE00B888BB /* HowToPlayDetailsVC.swift */; };
 		A3597531218EAF0600B888BB /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3597530218EAF0600B888BB /* UILabel.swift */; };
@@ -60,11 +60,11 @@
 		A316CE6E21DE2E09009BB66F /* VCSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCSwitcher.swift; sourceTree = "<group>"; };
 		A316CE7021E0C825009BB66F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A316CE7421E2FFF8009BB66F /* FirebaseDataMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataMode.swift; sourceTree = "<group>"; };
+		A31C5FCF2217D99800C49714 /* PuplicVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuplicVariables.swift; sourceTree = "<group>"; };
 		A3241D9721D08AB200104FD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A357F2AA21F3CB35005A3EFD /* InGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGame.swift; sourceTree = "<group>"; };
 		A357F2AC21F71119005A3EFD /* GameStartedTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartedTVC.swift; sourceTree = "<group>"; };
 		A3597527218A7A2800B888BB /* HowToPlayTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayTVC.swift; sourceTree = "<group>"; };
-		A359752A218A7EBD00B888BB /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		A359752C218A82B900B888BB /* HowToPlayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayData.swift; sourceTree = "<group>"; };
 		A359752E218E79BE00B888BB /* HowToPlayDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayDetailsVC.swift; sourceTree = "<group>"; };
 		A3597530218EAF0600B888BB /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -158,14 +158,6 @@
 			name = "Sgin in /Sgin up VC's";
 			sourceTree = "<group>";
 		};
-		A3597529218A7D6200B888BB /* Custom Cell */ = {
-			isa = PBXGroup;
-			children = (
-				A359752A218A7EBD00B888BB /* CustomCell.xib */,
-			);
-			path = "Custom Cell";
-			sourceTree = "<group>";
-		};
 		A3896DE1221112C2000607B7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				A3896DE7221113DA000607B7 /* Functions.swift */,
+				A31C5FCF2217D99800C49714 /* PuplicVariables.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -249,7 +242,6 @@
 			children = (
 				A38E0146215DCCB900F041C7 /* Main.storyboard */,
 				A38E014B215DCCBB00F041C7 /* LaunchScreen.storyboard */,
-				A3597529218A7D6200B888BB /* Custom Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -336,7 +328,6 @@
 				A38E014D215DCCBB00F041C7 /* LaunchScreen.storyboard in Resources */,
 				A38E014A215DCCBB00F041C7 /* Assets.xcassets in Resources */,
 				A3241D9821D08AB200104FD3 /* GoogleService-Info.plist in Resources */,
-				A359752B218A7EBD00B888BB /* CustomCell.xib in Resources */,
 				A38E0148215DCCB900F041C7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,6 +412,7 @@
 				A359752F218E79BE00B888BB /* HowToPlayDetailsVC.swift in Sources */,
 				A381B55B220EABDE00829301 /* TableViewControllerForSelectingRole.swift in Sources */,
 				A37DF06222000DDB00B4D85C /* NotificationKeysExtension.swift in Sources */,
+				A31C5FD02217D99800C49714 /* PuplicVariables.swift in Sources */,
 				A316CE5F21D9A635009BB66F /* TextFieldExtension.swift in Sources */,
 				A357F2AD21F71119005A3EFD /* GameStartedTVC.swift in Sources */,
 				A3597528218A7A2800B888BB /* HowToPlayTVC.swift in Sources */,

@@ -11,7 +11,8 @@ extension Notification.Name {
     
 static let playersJoinedTheGameLabelHasBeenUpdated = Notification.Name( rawValue: "playersJoinedTheGameLabelHasBeenUpdated")
     
-    static let userIsAlreadyInAGame = NSNotification.Name( rawValue: "userIsAlreadyInAGame")
+    static let notifyUsersInGame = NSNotification.Name( rawValue: "userIsAlreadyInAGame")
 }
+
 
 

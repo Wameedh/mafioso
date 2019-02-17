@@ -27,8 +27,6 @@ class WelcomeVC: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    
-    
     @IBAction func unwindToNewJoinGameView(segue: UIStoryboardSegue) {
         
         if let segue = segue as? UIStoryboardSegueWithCompletion {
@@ -38,38 +36,4 @@ class WelcomeVC: UIViewController {
         }
         
     }
-   
-    
-//    let userID = Auth.auth().currentUser?.uid
-//    Database.database().reference().child("Users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-//    // Get user value
-//    guard let value = snapshot.value as? [String: AnyObject] else {
-//    return
-//    }
-//    guard let gameCode = value["gameCode"] as? String else {
-//    return
-//    }
-//
-//    self.dataModel = FirebaseDataModel(childPath: gameCode)
-//    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//    self.x()
-//
-//
-//    }
-//    }) { (error) in
-//    //                self.performSegue(withIdentifier: "newJoinAGameVC", sender: self)
-//    print(error.localizedDescription)
-//    }
-//
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "toInGame"{
-//        if let vc = segue.destination as? InGameVC {
-//            vc.role = "MashaAllah"
-//        }
-//     }
-//    }
-    
 }

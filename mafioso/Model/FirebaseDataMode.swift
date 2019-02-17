@@ -31,28 +31,30 @@ class FirebaseDataModel: NSObject {
     
         if let value = snapshot.value as? [String: AnyObject],let playersJoined = value["playersJoined"] as? Int,
             let gameCode = value["gameCode"] as? String,
-            let players = value["players"] as? [AnyObject] {
+            let players = value["players"] as? [AnyObject],let gameStarted = value["gameStarted"] as? Bool {
+            
             //Modling array of players that will be used for initilaizing
             
             //loops over the players in the gamep
             for i in 0..<players.count {
-                if let status = players[i]["status"] as? String, let role = players[i]["role"] as? String, let name = players[i]["name"] as? String, let id = players[i]["id"] as? String, let group = players[i]["group"] as? Int
+                if let status = players[i]["status"] as? Bool, let role = players[i]["role"] as? String, let name = players[i]["name"] as? String, let id = players[i]["id"] as? String, let group = players[i]["group"] as? Int
                 {
                     print("MashaAllah")
                     
                     var player: Player = Player()
                     player.name = name
                     player.role = role
-                    player.status = status.boolValueFromString()
+                    player.status = status
                     player.uid = id
                     player.group = group
                     player.indexOfselectedPlayerInTheDB = String(i)
                     playersArray.append(player)
                 }
             }
-            self.data = Game(gameCode: gameCode, player: playersArray, playersJoined: playersJoined)
+            self.data = Game(gameCode: gameCode, gameStarted: gameStarted, player: playersArray, playersJoined: playersJoined)
+    NotificationCenter.default.post(name: .playersJoinedTheGameLabelHasBeenUpdated, object: self)
             
-        NotificationCenter.default.post(name: .playersJoinedTheGameLabelHasBeenUpdated, object: self)
+        NotificationCenter.default.post(name: .notifyUsersInGame, object: self.data)
             dataModeled = true
         } else {
             print("Data has not been modeled!")
@@ -62,43 +64,12 @@ class FirebaseDataModel: NSObject {
 
     
     func observer() {
-        Database.database().reference().child("Games").child(childPath).observe(.value) { (snapshot) in
+Database.database().reference().child("Games").child(childPath).observe(.value) { (snapshot) in
             self.snap(snapshot: snapshot)
             print("updated")
             
         }
     }
-
-//func addGame(game: Game){
-//        data = game
-//        firebaseReference.child(childPath).setValue(game)
-//    }
-
-    
-//func deleteGame(game: Game){
-//        //1
-//        if data.gameCode == game.gameCode {
-//            data = [Game]
-//        }
-//
-//        //2
-//    firebaseReference.child(childPath).observeSingleEvent(of: DataEventType.value, with: {
-//            (snapshot) in
-//            //3
-//            let children = snapshot.children
-//            while let child = children.nextObject() as? DataSnapshot {
-//                if item == child.value as! String {
-//                    //4
-//                    child.ref.removeValue()
-//
-//
-//                    //5
-//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refresh"), object: nil)
-//                    break
-//                }
-//            }
-//        }, withCancel: nil)
-//    }
 
 }
 

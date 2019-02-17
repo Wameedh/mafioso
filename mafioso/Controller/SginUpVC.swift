@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 import Firebase
 
-class SginUpVC: UIViewController {
+class SginUpVC: UIViewController, UITextFieldDelegate {
     
     
     //Pre-linked IBOutlets
@@ -27,18 +27,28 @@ class SginUpVC: UIViewController {
         nameTextfield.setBottomBorder()
         emailTextfield.setBottomBorder()
         passwordTextfield.setBottomBorder()
+        self.passwordTextfield.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func sginUpPressed(_ sender: AnyObject) {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        SVProgressHUD.show()
+        //textField code
         
+        textField.resignFirstResponder()  //if desired
+        signUp()
+        return true
+    }
+    
+    
+    
+    func signUp() {
+        ShowCustomSVProgressHUD()
         //Set up a new user on Firebase database
-        
         if let email = emailTextfield.text , let password = passwordTextfield.text, let name = nameTextfield.text {
             
             Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
@@ -61,13 +71,18 @@ class SginUpVC: UIViewController {
                     })
                     
                     print("Registration Successful!")
-                    SVProgressHUD.dismiss()
                     self.performSegue(withIdentifier: "newJoinAGameVC", sender: self)
                 }
             }
         } else {
             //handle the error of email or password text feilds are empty
         }
+    }
+    
+    
+    @IBAction func sginUpPressed(_ sender: AnyObject) {
+        signUp()
+        
     }
     
     

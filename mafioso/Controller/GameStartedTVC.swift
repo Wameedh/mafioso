@@ -8,22 +8,25 @@
 
 import UIKit
 import Firebase
-
+import SVProgressHUD
 class GameStartedTVC: UITableViewController {
     
-    
+  
     var game: Game!
+    var ref = Database.database().reference()
     
-    //This array will be used to kick off all users from the game after the moderator termnate the game
-    var arrayOfUsersIds: [String] = []
+    var arrayOfBoolsForCellImage: [[Bool]] = [[],[],[]]
     
     @IBOutlet weak var endGameButton: UIButton!
     
     
     override func viewDidLoad() {
+        SVProgressHUD.dismiss()
         setPositionEndGameButton()
+        self.tableView.rowHeight = 70.0
         populateArrayOfUsersIds()
-        self.tableView.rowHeight = 50.0
+        print(arrayOfBoolsForCellImage)
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,8 +51,7 @@ class GameStartedTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        //        header.backgroundView?.backgroundColor = .red
-        //        header.textLabel?.textColor = .yellow
+        header.backgroundView?.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         
     }
@@ -68,16 +70,17 @@ class GameStartedTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameStartedTVCCell", for: indexPath)
         
-        let player: Player
+        let player = playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
         
-        switch (indexPath.section) {
-        case 0:
-            player = game.innocentsGroup[indexPath.row]
-        case 1:
-            player = game.mafiaGroup[indexPath.row]
-        default:
-            player = game.othersGroup[indexPath.row]
+        if arrayOfBoolsForCellImage[indexPath.section][indexPath.row] {
+            cell.imageView?.image = nil
+        } else {
+            cell.imageView?.image = UIImage(named: "rip")
         }
+        
+        
+        cell.imageView?.frame.size.height = 60.0
+        cell.imageView?.frame.size.width = 60.0
         
         cell.textLabel?.text = player.name
         cell.detailTextLabel?.text = player.role
@@ -85,15 +88,22 @@ class GameStartedTVC: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selected")
-    }
     
-    //Populate the ArrayOfUsersIds with the ids of all users in the game
-    func populateArrayOfUsersIds(){
-        for i in self.game.players {
-            arrayOfUsersIds.append(i.uid)
-        }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedPlayer: Player = playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
+        
+    presentAlert(title: "Do you want to kill this player?", message: nil, vc: self, action: UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
+            self.ref.child("Games").child(self.game.gameCode + "/players/" + selectedPlayer.indexOfselectedPlayerInTheDB).updateChildValues([ "status": false])
+        
+        self.arrayOfBoolsForCellImage[indexPath.section][indexPath.row] = false
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
+        }), cancelAction: UIAlertAction(title: "No", style: .cancel, handler: { (_) in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        }))
+        print("Selected")
+       
     }
     
     
@@ -107,6 +117,22 @@ class GameStartedTVC: UITableViewController {
         endGameButton.heightAnchor.constraint(equalToConstant: 50).isActive = true // specify the height of the view if you want
     }
 
+
+    func populateArrayOfUsersIds() {
+        
+        for player in game.players {
+            if player.group == 1 {
+                //innocent
+                arrayOfBoolsForCellImage[0].append(player.status)
+            } else if player.group == 2 {
+                //mafia
+                arrayOfBoolsForCellImage[1].append(player.status)
+            } else {
+                //others
+                arrayOfBoolsForCellImage[2].append(player.status)
+            }
+        }
+    }
     
      // MARK: - IBAction
     @IBAction func endGameButtonPressed(_ sender: Any) {
@@ -115,10 +141,14 @@ class GameStartedTVC: UITableViewController {
             UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
             self.performSegue(withIdentifier: "unwindToNewJoinGame", sender: self)
         
-                for i in self.arrayOfUsersIds {
-        Database.database().reference().child("Users").child(i).removeValue()
+                for i in self.game.arrayOfUsersIds {
+                    self.ref.child("Users").child(i).removeValue()
                 }
-                }))
+                if let uid = Auth.auth().currentUser?.uid {
+                self.ref.child("Users").child(uid).removeValue()
+                }
+            self.ref.child("Games").child(self.game.gameCode).removeValue()
+                }), cancelAction: nil)
     }
     
 }

@@ -18,13 +18,6 @@ struct Player {
     var group: Int = 0
     var indexOfselectedPlayerInTheDB: String = ""
     
-    
-    func printInfo() {
-        print("Player Name: \(self.name)")
-        print("ID: \(self.uid)")
-        print("Role: \(self.role)")
-        print("Status: \(self.status)")
-    }
 }
 
 

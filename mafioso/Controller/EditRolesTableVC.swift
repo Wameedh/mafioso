@@ -62,8 +62,7 @@ class EditRolesTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-//        header.backgroundView?.backgroundColor = .red
-//        header.textLabel?.textColor = .yellow
+        header.backgroundView?.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         
     }
@@ -83,16 +82,7 @@ class EditRolesTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editRoleCell", for: indexPath)
         
-        let player: Player
-        
-        switch (indexPath.section) {
-        case 0:
-            player = game.innocentsGroup[indexPath.row]
-        case 1:
-            player = game.mafiaGroup[indexPath.row]
-        default:
-            player = game.othersGroup[indexPath.row]
-        }
+        let player = playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
         cell.textLabel?.text = player.name
         cell.detailTextLabel?.text = player.role
         
@@ -100,18 +90,7 @@ class EditRolesTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        switch (indexPath.section) {
-        case 0:
-            selectedPlayer = game.innocentsGroup[indexPath.row]
-            
-        case 1:
-            selectedPlayer = game.mafiaGroup[indexPath.row]
-            
-        default:
-           selectedPlayer = game.othersGroup[indexPath.row]
-        }
-        
+        selectedPlayer = playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
         performSegue(withIdentifier: "toSelectingRoleTVC", sender: self)
         
     }
@@ -132,11 +111,6 @@ class EditRolesTableVC: UITableViewController {
         destinationVC?.gameCode = game.gameCode
             
         }
-        
-        
-        
     }
-    
-    
 }
 

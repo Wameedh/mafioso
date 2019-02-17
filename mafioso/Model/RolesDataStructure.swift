@@ -12,8 +12,6 @@ import Firebase
 class RolesData {
     
     static var roles: [[String]] = [
-        
-        
         //THE INNOCENTS
         ["Innocent",
         "The Detective",
@@ -91,35 +89,5 @@ class func observer() {
         }
        
         }
-    
     }
-    
-//  class func getDescriptionOfARole(role: String) -> String {
-//    if let i = self.roles.firstIndex(of: role) {
-//        return description[i]
-//    } else {
-//        return "Wrong role or there is no description for this role!"
-//    }
-//    
-//    }
-    
-    /*
-     This function take an Int from 0 to 2. 0 means the requested group is for Innocents, 1 means the requested group is for Mafia, and 2 means the requested group is for the Others group.
-    */
-    
-//    class func getArrayOfRolesOfrequestedGroup(section: Int) -> [String] {
-//
-//        var array: [String] = []
-//
-//        for i in (0...roleGroupIdentifier.count) {
-//
-//            if roleGroupIdentifier[i] == section {
-//                 array.append(roles[i])
-//            }
-//        }
-//        return array
-//    }
-    
-    
-    
 }

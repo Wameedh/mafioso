@@ -7,33 +7,34 @@
 //
 
 import UIKit
-//protocol FirebaseModel {
-//    //init?(snapshot: DataSnapshot)
-//    func toAnyObject() -> [String: Any]
-//
-//}
+import Firebase
+
 class Game {
     
     
     var players: [Player]
     var gameCode: String
     var playersJoined: Int
+    var gameStarted: Bool
     
     var numberOfInnocent: Int = 0
     var numberOfMafia: Int = 0
     var numberOfOthers: Int = 0
-    
+    //This array will be used to kick off all users from the game after the moderator termnate the game
+    var arrayOfUsersIds: [String] = []
     
     
     var innocentsGroup: [Player] = []
     var mafiaGroup: [Player] = []
     var othersGroup: [Player] = []
 
-    init(gameCode: String, player: [Player], playersJoined: Int) {
+    init(gameCode: String, gameStarted: Bool, player: [Player], playersJoined: Int) {
         self.players = player
         self.gameCode = gameCode
         self.playersJoined = playersJoined
+        self.gameStarted = gameStarted
         sortingPlayersInThreeGroups()
+        populateArrayOfUsersIds()
     }
     
     
@@ -52,28 +53,27 @@ class Game {
         }
     }
     
-//    func getIndexOfselectedPlayerInTheDB(uid: String) throws -> Int {
-//        var index: Int!
-//
-//        for i in 0..<players.count {
-//            if players[i].uid == uid {
-//                index = i
-//            }
-//        }
-//
-//            return index
-//
-//    }
     
-    func toAnyObject() -> [String: Any] {
-        return [
-            "gameCode": gameCode,
-            "players": players,
-            "playersJoined": playersJoined
-        ]
+    func getCurrentPlayer() throws -> Player {
+        
+        var player: Player = Player()
+        for i in 0..<players.count {
+            //NOTE//updtat the for loop to exit as soon as it assign the player
+            if players[i].uid == Auth.auth().currentUser?.uid {
+                player = players[i]
+                break
+            }
+        }
+        
+        return player
     }
     
     
-    
+    //Populate the ArrayOfUsersIds with the ids of all users in the game
+    private func populateArrayOfUsersIds(){
+        for i in players {
+            arrayOfUsersIds.append(i.uid)
+        }
+    }
     
 }

@@ -7,22 +7,25 @@
 //
 
 import UIKit
+import Firebase
+import SVProgressHUD
 
 class PlayVC: UIViewController {
 
     @IBOutlet weak var editRolesButton: UIButton!
-    
     @IBOutlet weak var gameCodeLable: UILabel!
-    
+    @IBOutlet weak var informationForstartingGameLabel: UILabel!
     @IBOutlet weak  var playersJoinedLable: UILabel!
     
-    lazy var gameCode = ""
+    var ref = Database.database().reference()
+    var gameCode = ""
     var dataModel: FirebaseDataModel!
     var numberOfPlayers = 0
 
     
     
     override func viewDidLoad() {
+        SVProgressHUD.dismiss()
         gameCodeLable.text = gameCode
         dataModel = FirebaseDataModel(childPath: gameCode)
     NotificationCenter.default.addObserver(self, selector: #selector(updateplayersJoinedLableAfterNotified), name: .playersJoinedTheGameLabelHasBeenUpdated, object: nil)
@@ -33,47 +36,53 @@ class PlayVC: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent {
+            for i in self.dataModel.data.arrayOfUsersIds {
+                ref.child("Users").child(i).removeValue()
+            }
+            ref.child("Games").child(self.gameCode).removeValue()
+        }
+    }
     
    //Update the playersJoinedLable
     func updateLabel() {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
         self.playersJoinedLable.text = String(self.dataModel.data.playersJoined)
-        if self.dataModel.data.playersJoined == self.numberOfPlayers {
-            self.editRolesButton.isHidden = false
-        }
         }
     }
     
     //update playersJoinedLable After Notified from the data model that the value has changed, or one or more players has joined
     @objc func updateplayersJoinedLableAfterNotified() {
         updateLabel()
-        
     }
     
     
-    
+    // MARK: - IBAction
     @IBAction func editRoleButtonPressed(_ sender: Any) {
-        
         if dataModel.data.playersJoined == numberOfPlayers {
-            print("passed")
             performSegue(withIdentifier: "editRolesTVC", sender: self)
-            
+        } else {
+            informationForstartingGameLabel.text = "Wait for all players to join!"
         }
-        
     }
     
-    
-    //TO-DO: Start the game action. This should happen after all players has joined.
     
     @IBAction func startbuttonPressed(_ sender: Any) {
-        
         if dataModel.data.playersJoined == numberOfPlayers {
+           ShowCustomSVProgressHUD()
             performSegue(withIdentifier: "gameStartedTVC", sender: self)
-            NotificationCenter.default.post(name: .userIsAlreadyInAGame, object: true)
+    ref.child("Games").child(gameCode).updateChildValues(["gameStarted": true])
+        if let uid = Auth.auth().currentUser?.uid  {
+                ref.child("Users").child(uid).setValue(["moderator": gameCode])
+            }
+        } else {
+            informationForstartingGameLabel.text = "Wait for all players to join!"
         }
     }
     
-    
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gameStartedTVC"{
             let destinationVC = segue.destination as? GameStartedTVC
@@ -85,11 +94,7 @@ class PlayVC: UIViewController {
             
             destinationVC?.game = dataModel.data
         }
-        
-        
     }
-    
-    
 }
 
     

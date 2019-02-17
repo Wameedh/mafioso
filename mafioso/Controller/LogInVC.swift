@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import SVProgressHUD
 
-class LogInVC: UIViewController {
+class LogInVC: UIViewController, UITextFieldDelegate {
     
     //Textfields pre-linked with IBOutlets
     @IBOutlet var emailTextfield: UITextField!
@@ -21,6 +21,8 @@ class LogInVC: UIViewController {
         self.title = "Login"
         emailTextfield.setBottomBorder()
         passwordTextfield.setBottomBorder()
+
+        self.passwordTextfield.delegate = self
    
     }
     
@@ -29,27 +31,37 @@ class LogInVC: UIViewController {
     }
     
     
-    //Log in an existing user
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //textField code
+        
+        textField.resignFirstResponder()  //if desired
+       logIn()
+        return true
+    }
     
-    @IBAction func logInPressed(_ sender: AnyObject) {
-        
-        SVProgressHUD.show()
-        
+    
+    func logIn() {
+        ShowCustomSVProgressHUD()
         
         if let email = emailTextfield.text , let password = passwordTextfield.text {
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in if error != nil {
+            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in if error != nil {
                 print(error!)
             } else {
                 print("Log in successful!")
-                
-                SVProgressHUD.dismiss()
                 self.performSegue(withIdentifier: "newJoinAGameVC", sender: self)
+                
+                }
                 
             }
             
         }
-        
-     }
+    }
+    
+    //Log in an existing user
+    
+    @IBAction func logInPressed(_ sender: AnyObject) {
+        logIn()
  }
     
     
