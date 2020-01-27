@@ -28,7 +28,8 @@ class JoinGameVC: UIViewController, UITextFieldDelegate {
     
     func playerJoinedInDatabase(gamecode: String) {
         if dataModel.dataModeled == true {
-            var playersArray = dataModel.data.players
+            //chaned to let check after testing
+            let playersArray = dataModel.data.players
             let numberOfPlayersInGame = dataModel.data.playersJoined
             
             for i in 0..<playersArray.count {
