@@ -29,6 +29,7 @@ class PlayVC: UIViewController {
         gameCodeLable.text = gameCode
         dataModel = FirebaseDataModel(childPath: gameCode)
     NotificationCenter.default.addObserver(self, selector: #selector(updateplayersJoinedLableAfterNotified), name: .playersJoinedTheGameLabelHasBeenUpdated, object: nil)
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -39,19 +40,16 @@ class PlayVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if self.isMovingFromParent {
-            for i in self.dataModel.data.arrayOfUsersIds {
-                ref.child("Users").child(i).removeValue()
-            }
-            ref.child("Games").child(self.gameCode).removeValue()
-        }
+            dataModel.removeGameAndUser(gameCode: gameCode)
     }
-    
+    }
    //Update the playersJoinedLable
     func updateLabel() {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
         self.playersJoinedLable.text = String(self.dataModel.data.playersJoined)
         }
     }
+  
     
     //update playersJoinedLable After Notified from the data model that the value has changed, or one or more players has joined
     @objc func updateplayersJoinedLableAfterNotified() {
@@ -71,12 +69,14 @@ class PlayVC: UIViewController {
     
     @IBAction func startbuttonPressed(_ sender: Any) {
         if dataModel.data.playersJoined == numberOfPlayers {
-           ShowCustomSVProgressHUD()
+            ShowCustomSVProgressHUD()
             performSegue(withIdentifier: "gameStartedTVC", sender: self)
-    ref.child("Games").child(gameCode).updateChildValues(["gameStarted": true])
-        if let uid = Auth.auth().currentUser?.uid  {
-                ref.child("Users").child(uid).setValue(["moderator": gameCode])
-            }
+            
+            ref.child("Games").child(gameCode).updateChildValues(["gameStarted": true])
+            
+//        if let uid = Auth.auth().currentUser?.uid  {
+//                ref.child("Users").child(uid).setValue(["moderator": gameCode])
+//            }
         } else {
             informationForstartingGameLabel.text = "Wait for all players to join!"
         }

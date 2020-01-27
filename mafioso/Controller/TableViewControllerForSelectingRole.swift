@@ -66,10 +66,11 @@ class TableViewControllerForSelectingRole: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "slectingRoleCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detailsOfRolesCell", for: indexPath)
         
         // Configure the cell...
         cell.textLabel?.text = RolesData.roles[indexPath.section][indexPath.row]
+        
         
         return cell
     }

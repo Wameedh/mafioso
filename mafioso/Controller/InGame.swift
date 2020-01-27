@@ -29,26 +29,28 @@ class InGameVC: UIViewController {
     // MARK: - OVERRIDE FUNCTIONS
     override func viewDidLoad() {
         SVProgressHUD.dismiss()
+        updateDescriptionOfRoleLabel(labelsStatus: true)
         //notification: OLD WAY
         NotificationCenter.default.addObserver(self, selector: #selector(catchNotificationFromWelcomeVC), name: .notifyUsersInGame, object: nil)
-        updateDescriptionOfRoleLabel(labelsStatus: true)
+        
     }
     
     // MARK: - NOTIFICATIONS
     //updateLablesAfterNotified
     @objc func catchNotificationFromWelcomeVC(notification: Notification) {
-        print("Masha Allah! Entered the notification")
         if let notificationObject = notification.object as? [String: AnyObject] {
-            print("Thank God the Object has been accepted")
-            //if the notification has been come from VCSwitcher which means the user has termenated the game and came back
+            //if the notification comea from VCSwitcher which means the user has termenated the game and came back
             gameCode = (notificationObject["gameCode"] as! String)
             player = (notificationObject["player"] as! Player)
             role = player.role
+            if let data = notification.object as? Game {
+            
+                updateLabelsStatus(labelsStatus: !data.gameStarted)
+                updateDescriptionOfRoleLabel(labelsStatus: !data.gameStarted)
+            }
         } else if let data = notification.object as? Game {
             //if the notification has been sent from the PlayVC which means the modertaor has started the game
-            print("data is a Game type")
             if (data.gameStarted) && counter == 0 {
-                print("gameStarted is true")
                 do {
                     player = try data.getCurrentPlayer()
                     self.role = player.role

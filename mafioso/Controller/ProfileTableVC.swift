@@ -59,13 +59,25 @@ class ProfileTableVC: UITableViewController {
     
     func retrieveUserInfo() {
         
-        let currentUser = Auth.auth().currentUser!
+        if let currentUser = Auth.auth().currentUser {
        
-        if let name = currentUser.displayName, let email = currentUser.email {
-            user = User(name: name, email: email, gameCode: "")
-            UserInfoArray = user.UserInfoArray()
+            if let name = currentUser.displayName, let email = currentUser.email {
+                user = User(name: name, email: email, gameCode: "")
+                UserInfoArray = user.UserInfoArray()
+            } else {
+                print("No User info!!")
+            }
+            
         } else {
-            print("No User info!!")
+            
+            do {
+               try signOutAndPresentWelcomeVC()
+                print("Signed out succisfully!")
+            }
+            catch {
+                print("error: there was a problem logging out")
+            }
+            
         }
     }
     
@@ -84,6 +96,7 @@ class ProfileTableVC: UITableViewController {
     func signOutAndPresentWelcomeVC() throws {
        
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "welcomeVC"){
+            vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated:true, completion: nil)
             try Auth.auth().signOut()
             

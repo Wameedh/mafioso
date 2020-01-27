@@ -45,8 +45,10 @@ class LogInVC: UIViewController, UITextFieldDelegate {
         ShowCustomSVProgressHUD()
         
         if let email = emailTextfield.text , let password = passwordTextfield.text {
+            
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in if error != nil {
                 print(error!)
+                SVProgressHUD.dismiss()
             } else {
                 print("Log in successful!")
                 self.performSegue(withIdentifier: "newJoinAGameVC", sender: self)

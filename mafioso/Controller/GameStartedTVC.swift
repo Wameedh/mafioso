@@ -21,6 +21,7 @@ class GameStartedTVC: UITableViewController {
     
     
     override func viewDidLoad() {
+        
         SVProgressHUD.dismiss()
         setPositionEndGameButton()
         self.tableView.rowHeight = 70.0
@@ -102,7 +103,6 @@ class GameStartedTVC: UITableViewController {
         }), cancelAction: UIAlertAction(title: "No", style: .cancel, handler: { (_) in
             self.tableView.deselectRow(at: indexPath, animated: true)
         }))
-        print("Selected")
        
     }
     
@@ -140,7 +140,8 @@ class GameStartedTVC: UITableViewController {
         presentAlert(title: "Are you sure you want to quit?", message: "That means you will terminate your role in the game",vc: self, action:
             UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
             self.performSegue(withIdentifier: "unwindToNewJoinGame", sender: self)
-        
+           
+                //It could be improved, maybe using the removeGameAndUser function from the dataModel class!
                 for i in self.game.arrayOfUsersIds {
                     self.ref.child("Users").child(i).removeValue()
                 }
@@ -148,6 +149,7 @@ class GameStartedTVC: UITableViewController {
                 self.ref.child("Users").child(uid).removeValue()
                 }
             self.ref.child("Games").child(self.game.gameCode).removeValue()
+                
                 }), cancelAction: nil)
     }
     

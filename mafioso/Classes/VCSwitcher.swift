@@ -38,7 +38,7 @@ class VCSwitcher {
                 //NOTE//updtat the for loop to exit as soon as it assign the player
                 if playersArray[i].uid == Auth.auth().currentUser?.uid {
                     player = playersArray[i]
-                    print(player)
+                    
                     break
                 }
             }
@@ -70,16 +70,34 @@ class VCSwitcher {
                         let gameStarted = dataModel.data.gameStarted
                         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "786") as! InGameVC
                         
+                        vc.modalPresentationStyle = .fullScreen
+                        
                 rootViewController.present(vc, animated: true, completion: nil)
                     NotificationCenter.default.post(name: .notifyUsersInGame, object: ["player": player, "gameStarted": gameStarted, "gameCode": gameCode])
                     }
-                } else if let moderator = value["moderator"] as? String {
+                } else if let moderator = value["moderator"] as? String  {
                     let dataModel = FirebaseDataModel(childPath: moderator)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     
-                     let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gameStartedTVC") as! GameStartedTVC
-                        vc.game = dataModel.data
-                        rootViewController.present(vc, animated: true, completion: nil)
+                        let gameStarted = dataModel.data.gameStarted
+                        if gameStarted == true {
+                            ////
+                            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gameStartedTVC") as! GameStartedTVC
+                             vc.game = dataModel.data
+                             
+                             vc.modalPresentationStyle = .fullScreen
+                             
+                             rootViewController.present(vc, animated: true, completion: nil)
+                            ///
+                        } else {
+                           
+                            print("Delete the game and the user")
+                            
+                            dataModel.removeGameAndUser(gameCode: moderator)
+                                
+                        }
+                        
+                     
                     }
                 }
             }

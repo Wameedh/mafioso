@@ -79,6 +79,11 @@ class NumberOfPlayersVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
                 }
             } else if let code = (result?.data as? [String: Any])?["gameCode"] as? String {
                 self.gameCode = code
+                
+                if let uid = Auth.auth().currentUser?.uid  {
+                    self.ref.child("Users").child(uid).setValue(["moderator": code])
+                           }
+                
                 self.performSegue(withIdentifier: "playVC", sender: self)
                 
             }

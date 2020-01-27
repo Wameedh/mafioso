@@ -20,6 +20,7 @@ class SginUpVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var passwordTextfield: UITextField!
     
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +54,16 @@ class SginUpVC: UIViewController, UITextFieldDelegate {
             
             Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                 
-                if error != nil {
-                    print(error!)
+                if error != nil || name.isEmpty {
+                   
+                    self.errorLabel.text = error?.localizedDescription ?? "Something went wrong!"
+                    
+                    if name.isEmpty {
+                        self.errorLabel.text = "You must enter your name."
+                    }
+                    
+                    SVProgressHUD.dismiss()
+                    
                 } else {
                     print("Registration Successful!")
                     //update the profile by adding the user name
@@ -66,7 +75,8 @@ class SginUpVC: UIViewController, UITextFieldDelegate {
                     Database.database().reference().child("Users").child(uid).setValue(["gameCode": nil])
                     changeRequest?.commitChanges(completion: { (error) in
                         if let error = error {
-                            print(error.localizedDescription)
+                            self.errorLabel.text = error.localizedDescription
+                              SVProgressHUD.dismiss()
                         }
                     })
                     
@@ -76,6 +86,7 @@ class SginUpVC: UIViewController, UITextFieldDelegate {
             }
         } else {
             //handle the error of email or password text feilds are empty
+            self.errorLabel.text = "email or password text feilds are empty"
         }
     }
     
