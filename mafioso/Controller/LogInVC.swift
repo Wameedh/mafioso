@@ -16,6 +16,10 @@ class LogInVC: UIViewController, UITextFieldDelegate {
     @IBOutlet var emailTextfield: UITextField!
     @IBOutlet var passwordTextfield: UITextField!
     
+    
+    @IBOutlet weak var errorLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Login"
@@ -49,6 +53,8 @@ class LogInVC: UIViewController, UITextFieldDelegate {
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in if error != nil {
                 print(error!)
                 SVProgressHUD.dismiss()
+                
+                self.errorLabel.text = error?.localizedDescription
             } else {
                 print("Log in successful!")
                 self.performSegue(withIdentifier: "newJoinAGameVC", sender: self)

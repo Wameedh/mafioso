@@ -48,7 +48,7 @@ class FirebaseDataModel: NSObject {
                     playersArray.append(player)
                 }
             }
-            self.data = Game(gameCode: gameCode, gameStarted: gameStarted, player: playersArray, playersJoined: playersJoined)
+            self.data = Game(gameCode: gameCode, gameStarted: gameStarted, players: playersArray, playersJoined: playersJoined)
             NotificationCenter.default.post(name: .playersJoinedTheGameLabelHasBeenUpdated, object: self)
             
             NotificationCenter.default.post(name: .notifyUsersInGame, object: self.data)

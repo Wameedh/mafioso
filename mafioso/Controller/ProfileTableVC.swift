@@ -19,12 +19,9 @@ class ProfileTableVC: UITableViewController {
     
     
     override func viewDidLoad() {
-    
-        retrieveUserInfo()
+         super.viewDidLoad()
         setPositionSginOutButton()
-        
     }
-    
     
     private func setPositionSginOutButton() {
         // set position
@@ -57,55 +54,18 @@ class ProfileTableVC: UITableViewController {
     
     }
     
-    func retrieveUserInfo() {
-        
-        if let currentUser = Auth.auth().currentUser {
-       
-            if let name = currentUser.displayName, let email = currentUser.email {
-                user = User(name: name, email: email, gameCode: "")
-                UserInfoArray = user.UserInfoArray()
-            } else {
-                print("No User info!!")
-            }
-            
-        } else {
-            
-            do {
-               try signOutAndPresentWelcomeVC()
-                print("Signed out succisfully!")
-            }
-            catch {
-                print("error: there was a problem logging out")
-            }
-            
-        }
-    }
-    
     
     @IBAction func signOutPressed(resultButton sender: Any) {
         
         do {
-           try signOutAndPresentWelcomeVC()
+           try signOutAndPresentWelcomeVC(viewController: self)
         }
         catch {
             print("error: there was a problem logging out")
         }
      }
     
-    
-    func signOutAndPresentWelcomeVC() throws {
-       
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "welcomeVC"){
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated:true, completion: nil)
-            try Auth.auth().signOut()
-            
-        }else{
-            throw appErrors.unableToSiginOut
-        }
-    }
-    
-    }
+}
     
     
 

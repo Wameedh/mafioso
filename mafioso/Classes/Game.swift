@@ -28,8 +28,8 @@ class Game {
     var mafiaGroup: [Player] = []
     var othersGroup: [Player] = []
 
-    init(gameCode: String, gameStarted: Bool, player: [Player], playersJoined: Int) {
-        self.players = player
+    init(gameCode: String, gameStarted: Bool, players: [Player], playersJoined: Int) {
+        self.players = players
         self.gameCode = gameCode
         self.playersJoined = playersJoined
         self.gameStarted = gameStarted

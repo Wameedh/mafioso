@@ -12,12 +12,12 @@ import SVProgressHUD
 
 class NewJoinAGameVC: UIViewController {
     
-    
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SVProgressHUD.dismiss()
         // Do any additional setup after loading the view, typically from a nib.
+        SVProgressHUD.dismiss()
         VCSwitcher.checkIfUserIsPartOfAGame(rootViewController: self)
         RolesData.observer()
     }
@@ -34,6 +34,52 @@ class NewJoinAGameVC: UIViewController {
     }
     
     
-
-}
+ // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if identifier == "toProfileVC" {
+            if let currentUser = Auth.auth().currentUser {
+                if let name = currentUser.displayName, let email = currentUser.email {
+                    user = User(name: name, email: email, gameCode: "")
+                    return true
+                } else {
+                    
+                    
+                    presentAlert(title: "Error!", message: "Something went wrong when getting user info, do you want to sign out?",vc: self, action:
+                     UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
+                        
+                        do {
+                            try signOutAndPresentWelcomeVC(viewController: self)
+                        }
+                        catch {
+                            print("error: there was a problem logging out")
+                        }
+                         
+                         }), cancelAction: nil)
+                    
+                    return false
+                   
+                }
+            }
+            
+        }
+        
+        return true
+        
+    }
+    
+   
+       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           
+           if segue.identifier == "toProfileVC" {
+               let destinationVC = segue.destination as? ProfileTableVC
+               
+            destinationVC?.user = user
+            destinationVC?.UserInfoArray = user.UserInfoArray()
+           }
+       }
+    
+    
+} // End of NewJoinAGameVC class
 

@@ -9,10 +9,11 @@
 import Foundation
 
 enum appErrors: Error {
+    
     case invalidEmail
     case invalidInput
-    case unableToSiginOut
+    case unableToSginOut
     
-    case SmothingWentWrong(reason: String)
-    
+    case smothingWentWrong(reason: String)
+    case InternetIssue
 }

@@ -65,7 +65,6 @@ class SginUpVC: UIViewController, UITextFieldDelegate {
                     SVProgressHUD.dismiss()
                     
                 } else {
-                    print("Registration Successful!")
                     //update the profile by adding the user name
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     changeRequest?.displayName = name
@@ -80,7 +79,6 @@ class SginUpVC: UIViewController, UITextFieldDelegate {
                         }
                     })
                     
-                    print("Registration Successful!")
                     self.performSegue(withIdentifier: "newJoinAGameVC", sender: self)
                 }
             }

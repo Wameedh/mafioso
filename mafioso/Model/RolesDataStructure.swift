@@ -52,7 +52,7 @@ class RolesData {
     
     "The Magician": "On the side of the Innocents; can choose to kill one person who they suspect is Mafia each night or can save one person from being lynched by signaling to the Moderator; can do each of things only once.",
     
-    "The Lycan": "An Innocent or a Mafioso; appear to be Mafia during the night; this role helps the Mafia; if killed, they are revealed to be a Mafia member.",
+    "The Lycan": "An Innocent or a Mafioso; is a third party-aligned player who may target a player every night and attempt to guess their role. If they guess the target's role correctly, the target will die, and the Lycan will be immune to daykills and lynches the next day.",
     
     "The Peeping-Tom": "Allowed to open their eyes at any moment; knows who is who in the game; very likely to be killed for this knowledge.",
     
@@ -83,7 +83,7 @@ class func observer() {
          
             self.roles = roles
             self.description = description
-            
+             
         } else {
             print("Roles data has not been modeled!")
         }

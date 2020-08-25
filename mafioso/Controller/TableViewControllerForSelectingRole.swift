@@ -14,6 +14,8 @@ class TableViewControllerForSelectingRole: UITableViewController {
     lazy var ref = Database.database().reference().child("Games")
     var player: Player!
     var gameCode = ""
+    var IndexOfSection = 999
+    var numberOfPlayersIsOne = false
     
     
     override func viewDidLoad() {
@@ -67,10 +69,17 @@ class TableViewControllerForSelectingRole: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "detailsOfRolesCell", for: indexPath)
-        
+        let role = RolesData.roles[indexPath.section][indexPath.row]
         // Configure the cell...
-        cell.textLabel?.text = RolesData.roles[indexPath.section][indexPath.row]
+        cell.textLabel?.text = role
         
+        if indexPath.section != IndexOfSection && numberOfPlayersIsOne {
+            //strike through the roles that should not be selected.
+            let attText = role.getAttributedString()
+            attText.strikeThrough(thickness: 2, subString: role)
+            cell.textLabel?.attributedText = attText
+            cell.textLabel?.textColor = UIColor.gray
+        }
         
         return cell
     }
@@ -78,13 +87,21 @@ class TableViewControllerForSelectingRole: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let selectedRole = RolesData.roles[indexPath.section][indexPath.row]
-        updateDBWithNewRole(role: selectedRole, groupNumber: indexPath.section + 1)
+        if indexPath.section != IndexOfSection && numberOfPlayersIsOne {
         
-        if let owningNavigationController = navigationController{
-            owningNavigationController.popViewController(animated: true)
+            self.tableView.deselectRow(at: indexPath, animated: false)
+        } else {
+            //change the role in the database and back to EditRolesTableVC
+            let selectedRole = RolesData.roles[indexPath.section][indexPath.row]
+                       
+                    updateDBWithNewRole(role: selectedRole, groupNumber: indexPath.section + 1)
+            
+                       if let owningNavigationController = navigationController{
+                           owningNavigationController.popViewController(animated: true)
+            }
+            
         }
-        
+       
     }
     //updates The Database With the New Role
     func updateDBWithNewRole(role: String, groupNumber: Int) {

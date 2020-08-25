@@ -216,8 +216,8 @@
 				A3896DE22211130A000607B7 /* Extensions */,
 				A3896DE1221112C2000607B7 /* Classes */,
 				A38E0154215DCD0D00F041C7 /* Model */,
-				A38E0155215DCD1700F041C7 /* View */,
 				A38E0156215DCD1D00F041C7 /* Controller */,
+				A38E0155215DCD1700F041C7 /* View */,
 				A38E0149215DCCBB00F041C7 /* Assets.xcassets */,
 				A316CE6921DCD5CC009BB66F /* mafioso.entitlements */,
 				A37DF05C21FBE4A300B4D85C /* mafioso.xcdatamodeld */,
@@ -294,6 +294,7 @@
 				TargetAttributes = {
 					A38E013E215DCCB900F041C7 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1130;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -584,7 +585,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wameedh.mafioso;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -607,7 +608,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wameedh.mafioso;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

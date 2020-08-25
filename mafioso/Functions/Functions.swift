@@ -44,3 +44,15 @@ func ShowCustomSVProgressHUD() {
     SVProgressHUD.show()
 }
 
+// sign out the user then present welcome view controller which is the base view
+func signOutAndPresentWelcomeVC(viewController: UIViewController) throws {
+   
+    if let vc = viewController.storyboard?.instantiateViewController(withIdentifier: "welcomeVC"){
+        vc.modalPresentationStyle = .fullScreen
+        viewController.present(vc, animated:true, completion: nil)
+        try Auth.auth().signOut()
+        
+    }else{
+        throw appErrors.unableToSginOut
+    }
+}

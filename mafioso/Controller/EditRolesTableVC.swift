@@ -13,9 +13,11 @@ class EditRolesTableVC: UITableViewController {
     
     var game: Game!
     var selectedPlayer: Player = Player()
-    
+    var IndexOfSection = 999
+    var numberOfPlayersIsOne = false
     
     override func viewDidLoad() {
+         super.viewDidLoad()
          NotificationCenter.default.addObserver(self, selector: #selector(self.catchNotificationFromFirebaseDataModel), name: .playersJoinedTheGameLabelHasBeenUpdated, object: nil)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Help", style: .done, target: self, action: #selector(helpTapped))
@@ -24,7 +26,12 @@ class EditRolesTableVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //Your Code Here...
+        
+        //rest IndexOfSection
+        IndexOfSection = 999
+        //rest to false
+        numberOfPlayersIsOne = false
+        
         DispatchQueue.main.async (execute: { () -> Void in
             self.tableView.reloadData()
         })
@@ -36,6 +43,7 @@ class EditRolesTableVC: UITableViewController {
         
         if let dataModel = notification.object as? FirebaseDataModel {
            game = dataModel.data
+            self.tableView.reloadData()
         }
         
     }
@@ -71,14 +79,21 @@ class EditRolesTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
         case 0:
-            return game.innocentsGroup.count
+
+            return game.numberOfInnocent
+                //game.innocentsGroup.count
         case 1:
-            return game.mafiaGroup.count
+
+            return game.numberOfMafia
+                //game.mafiaGroup.count
+            
         default:
-            return game.othersGroup.count
+            return game.numberOfOthers
+                //game.othersGroup.count
         }
     }
     
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editRoleCell", for: indexPath)
         
@@ -90,7 +105,14 @@ class EditRolesTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if tableView.numberOfRows(inSection: indexPath.section) == 1 && indexPath.section != 2 {
+            IndexOfSection = indexPath.section
+            numberOfPlayersIsOne = true
+        }
+        
         selectedPlayer = playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
+        
         performSegue(withIdentifier: "toSelectingRoleTVC", sender: self)
         
     }
@@ -109,7 +131,8 @@ class EditRolesTableVC: UITableViewController {
             
           destinationVC?.player = selectedPlayer
         destinationVC?.gameCode = game.gameCode
-            
+            destinationVC?.IndexOfSection = IndexOfSection
+            destinationVC?.numberOfPlayersIsOne = numberOfPlayersIsOne
         }
     }
 }
