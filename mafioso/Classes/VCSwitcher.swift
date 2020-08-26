@@ -20,7 +20,7 @@ class VCSwitcher {
         if (status != nil) {
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newJoinGame") as! UINavigationController
         }else{
-        rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "welcomeVC") as! UINavigationController
+            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "welcomeVC") as! UINavigationController
         }
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -34,22 +34,22 @@ class VCSwitcher {
         var player: Player = Player()
         let playersArray =  dataModel.data.players
         
-            for i in 0..<playersArray.count {
-                //NOTE//updtat the for loop to exit as soon as it assign the player
-                if playersArray[i].uid == Auth.auth().currentUser?.uid {
-                    player = playersArray[i]
-                    
-                    break
-                }
+        for i in 0..<playersArray.count {
+            //NOTE//updtat the for loop to exit as soon as it assign the player
+            if playersArray[i].uid == Auth.auth().currentUser?.uid {
+                player = playersArray[i]
+                
+                break
             }
+        }
         
-            return player
+        return player
     }
     
     
-    //If there is a logged in user, by pass this screen and go straight to new/join a game ViewController
+//If there is a logged in user, by pass this screen and go straight to new/join a game ViewController
     
-   class func checkIfUserIsPartOfAGame(rootViewController: UIViewController) {
+    class func checkIfUserIsPartOfAGame(rootViewController: UIViewController) {
         
         let userID = Auth.auth().currentUser?.uid
         let userIDNode = Database.database().reference().child("Users")
@@ -72,31 +72,31 @@ class VCSwitcher {
                         
                         vc.modalPresentationStyle = .fullScreen
                         
-                rootViewController.present(vc, animated: true, completion: nil)
-                    NotificationCenter.default.post(name: .notifyUsersInGame, object: ["player": player, "gameStarted": gameStarted, "gameCode": gameCode])
+                        rootViewController.present(vc, animated: true, completion: nil)
+                        NotificationCenter.default.post(name: .notifyUsersInGame, object: ["player": player, "gameStarted": gameStarted, "gameCode": gameCode])
                     }
                 } else if let moderator = value["moderator"] as? String  {
                     let dataModel = FirebaseDataModel(childPath: moderator)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    
+                        
                         if (dataModel.data.gameStarted) != false {
-                        //if gameStarted == true {
+                            //if gameStarted == true {
                             
                             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gameStartedTVC") as! GameStartedTVC
-                             vc.game = dataModel.data
-                             
-                             vc.modalPresentationStyle = .fullScreen
-                             
-                             rootViewController.present(vc, animated: true, completion: nil)
-                        
+                            vc.game = dataModel.data
+                            
+                            vc.modalPresentationStyle = .fullScreen
+                            
+                            rootViewController.present(vc, animated: true, completion: nil)
+                            
                         } else {
-                           
-                           //Delete the game and the user
+                            
+                            //Delete the game and the user
                             dataModel.removeGameAndUser(gameCode: moderator)
-                                
+                            
                         }
                         
-                     
+                        
                     }
                 }
             }

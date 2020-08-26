@@ -16,7 +16,7 @@ class FirebaseDataModel: NSObject {
     var data: Game!
     
     let ref = Database.database().reference()
-   // var error: appErrors!
+    // var error: appErrors!
     
     init(childPath: String) {
         self.childPath = childPath
@@ -61,8 +61,6 @@ class FirebaseDataModel: NSObject {
     func observer() {
         Database.database().reference().child("Games").child(childPath).observe(.value) { (snapshot) in
             self.snap(snapshot: snapshot)
-            //print("updated")
-            
         }
     }
     
@@ -70,14 +68,14 @@ class FirebaseDataModel: NSObject {
     func removeGameAndUser(gameCode: String){
         //Delete the players' IDs from the user ID node
         for i in data.arrayOfUsersIds {
-                     ref.child("Users").child(i).removeValue()
-                          }
-                //Delete the moderator ID from the user ID node
-                if let uid = Auth.auth().currentUser?.uid {
-        ref.child("Users").child(uid).removeValue()
-                }
-              //Delete the game
-            ref.child("Games").child(gameCode).removeValue()
+            ref.child("Users").child(i).removeValue()
+        }
+        //Delete the moderator ID from the user ID node
+        if let uid = Auth.auth().currentUser?.uid {
+            ref.child("Users").child(uid).removeValue()
+        }
+        //Delete the game
+        ref.child("Games").child(gameCode).removeValue()
     }
 }
 

@@ -29,7 +29,7 @@ class InGameVC: UIViewController {
     // MARK: - OVERRIDE FUNCTIONS
     override func viewDidLoad() {
         SVProgressHUD.dismiss()
-        updateDescriptionOfRoleLabel(labelsStatus: true)
+        updateDescriptionOfRoleLabel(labelsStatus: false)
         //notification: OLD WAY
         NotificationCenter.default.addObserver(self, selector: #selector(catchNotificationFromWelcomeVC), name: .notifyUsersInGame, object: nil)
         
@@ -38,15 +38,18 @@ class InGameVC: UIViewController {
     // MARK: - NOTIFICATIONS
     //updateLablesAfterNotified
     @objc func catchNotificationFromWelcomeVC(notification: Notification) {
+        
         if let notificationObject = notification.object as? [String: AnyObject] {
             //if the notification comea from VCSwitcher which means the user has termenated the game and came back
             gameCode = (notificationObject["gameCode"] as! String)
             player = (notificationObject["player"] as! Player)
             role = player.role
-            if let data = notification.object as? Game {
-            
-                updateLabelsStatus(labelsStatus: !data.gameStarted)
-                updateDescriptionOfRoleLabel(labelsStatus: !data.gameStarted)
+            let gameStarted = (notificationObject["gameStarted"] as! Bool)
+            if player.status {
+                updateLabelsStatus(labelsStatus: gameStarted)
+                updateDescriptionOfRoleLabel(labelsStatus: gameStarted)
+            } else if !player.status {
+                updatedescriptionOfRoleLabelWhenPlayerIsDead()
             }
         } else if let data = notification.object as? Game {
             //if the notification has been sent from the PlayVC which means the modertaor has started the game
@@ -54,8 +57,8 @@ class InGameVC: UIViewController {
                 do {
                     player = try data.getCurrentPlayer()
                     self.role = player.role
-                    updateLabelsStatus(labelsStatus: !data.gameStarted)
-                    updateDescriptionOfRoleLabel(labelsStatus: !data.gameStarted)
+                    updateLabelsStatus(labelsStatus: data.gameStarted)
+                    updateDescriptionOfRoleLabel(labelsStatus: data.gameStarted)
                     counter = 1
                 } catch {
                     print(error)
@@ -64,11 +67,7 @@ class InGameVC: UIViewController {
                 print(data)
                 player = try? data.getCurrentPlayer()
                 if !player.status {
-                    updateLabelsStatus(labelsStatus: true)
-                    descriptionOfRoleLabel.text = "You have been killed"
-                    descriptionOfRoleLabel.textAlignment = .center
-                    descriptionOfRoleLabel.font = descriptionOfRoleLabel.font.withSize(24)
-                    descriptionOfRoleLabel.textColor = .red
+                    updatedescriptionOfRoleLabelWhenPlayerIsDead()
                 }
             }
         }
@@ -77,20 +76,36 @@ class InGameVC: UIViewController {
     // MARK: - LABELS FUNCTIONS
     func updateDescriptionOfRoleLabel(labelsStatus: Bool){
         if labelsStatus {
-            descriptionOfRoleLabel.text = waitingMessage.randomElement()
-            descriptionOfRoleLabel.textAlignment = .center
-            descriptionOfRoleLabel.font = descriptionOfRoleLabel.font.withSize(24)
-        } else {
+            // Get the role of player
             roleLabel.text = role
+            // Update and formate description label
             descriptionOfRoleLabel.text = RolesData.description[role]
             descriptionOfRoleLabel.textAlignment = .left
             descriptionOfRoleLabel.font = descriptionOfRoleLabel.font.withSize(19)
+            
+        } else {
+            // Update and formate description label
+            descriptionOfRoleLabel.text = waitingMessage.randomElement()
+            descriptionOfRoleLabel.textAlignment = .center
+            descriptionOfRoleLabel.font = descriptionOfRoleLabel.font.withSize(24)
         }
     }
     
+    func updatedescriptionOfRoleLabelWhenPlayerIsDead(){
+        // hid lables
+        updateLabelsStatus(labelsStatus: false)
+        // Update and formate description label
+        descriptionOfRoleLabel.text = "You have been killed"
+        descriptionOfRoleLabel.textAlignment = .center
+        descriptionOfRoleLabel.font = descriptionOfRoleLabel.font.withSize(24)
+        descriptionOfRoleLabel.textColor = .red
+    }
+    
+    
     func updateLabelsStatus(labelsStatus: Bool){
-        roleLabel.isHidden = labelsStatus
-        roleHeaderLabel.isHidden = labelsStatus
+        // True hid the labels , False show the labels
+        roleLabel.isHidden = !labelsStatus
+        roleHeaderLabel.isHidden = !labelsStatus
     }
     
     // MARK: - QUITING THE GAME FUNCTIONS
