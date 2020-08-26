@@ -71,7 +71,8 @@ class GameStartedTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameStartedTVCCell", for: indexPath)
         
-        let player = playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
+        let player = game.playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row)
+            //playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
         
         if arrayOfBoolsForCellImage[indexPath.section][indexPath.row] {
             cell.imageView?.image = nil
@@ -92,18 +93,35 @@ class GameStartedTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let selectedPlayer: Player = playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
+//        let selectedPlayer: Player = playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
         
-    presentAlert(title: "Do you want to kill this player?", message: nil, vc: self, action: UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
-            self.ref.child("Games").child(self.game.gameCode + "/players/" + selectedPlayer.indexOfselectedPlayerInTheDB).updateChildValues([ "status": false])
+        let selectedPlayer: Player = game.playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row)
         
-        self.arrayOfBoolsForCellImage[indexPath.section][indexPath.row] = false
-        self.tableView.deselectRow(at: indexPath, animated: true)
-        tableView.reloadData()
-        }), cancelAction: UIAlertAction(title: "No", style: .cancel, handler: { (_) in
-            self.tableView.deselectRow(at: indexPath, animated: true)
-        }))
-       
+        if selectedPlayer.status {
+            presentAlert(title: "Do you want to kill this player?", message: nil, vc: self, action: UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
+                    self.ref.child("Games").child(self.game.gameCode + "/players/" + selectedPlayer.indexOfselectedPlayerInTheDB).updateChildValues([ "status": false])
+                
+                self.arrayOfBoolsForCellImage[indexPath.section][indexPath.row] = false
+                self.tableView.deselectRow(at: indexPath, animated: true)
+                tableView.reloadData()
+                }), cancelAction: UIAlertAction(title: "No", style: .cancel, handler: { (_) in
+                    self.tableView.deselectRow(at: indexPath, animated: true)
+                }))
+            game.changePlayerStatus(sectionIndex: indexPath.section, rowIndex: indexPath.row, status: false)
+        } else if !selectedPlayer.status {
+            
+            presentAlert(title: "Do you want to revive this player?", message: nil, vc: self, action: UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
+                       self.ref.child("Games").child(self.game.gameCode + "/players/" + selectedPlayer.indexOfselectedPlayerInTheDB).updateChildValues([ "status": true])
+                   
+                   self.arrayOfBoolsForCellImage[indexPath.section][indexPath.row] = true
+                   self.tableView.deselectRow(at: indexPath, animated: true)
+                   tableView.reloadData()
+                   }), cancelAction: UIAlertAction(title: "No", style: .cancel, handler: { (_) in
+                       self.tableView.deselectRow(at: indexPath, animated: true)
+                   }))
+            game.changePlayerStatus(sectionIndex: indexPath.section, rowIndex: indexPath.row, status: true)
+        }
+        
     }
     
     

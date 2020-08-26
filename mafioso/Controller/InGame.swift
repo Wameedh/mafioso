@@ -53,22 +53,24 @@ class InGameVC: UIViewController {
             }
         } else if let data = notification.object as? Game {
             //if the notification has been sent from the PlayVC which means the modertaor has started the game
-            if (data.gameStarted) && counter == 0 {
-                do {
-                    player = try data.getCurrentPlayer()
+            do {
+                player = try data.getCurrentPlayer()
+                if (data.gameStarted) && player.status {
+                    // player = try data.getCurrentPlayer()
                     self.role = player.role
                     updateLabelsStatus(labelsStatus: data.gameStarted)
                     updateDescriptionOfRoleLabel(labelsStatus: data.gameStarted)
-                    counter = 1
-                } catch {
-                    print(error)
+                    //counter = 1
+                    
+                } else {
+                    print(data)
+                    // player = try? data.getCurrentPlayer()
+                    if !player.status {
+                        updatedescriptionOfRoleLabelWhenPlayerIsDead()
+                    }
                 }
-            } else {
-                print(data)
-                player = try? data.getCurrentPlayer()
-                if !player.status {
-                    updatedescriptionOfRoleLabelWhenPlayerIsDead()
-                }
+            } catch {
+                print(error)
             }
         }
     }
@@ -82,12 +84,14 @@ class InGameVC: UIViewController {
             descriptionOfRoleLabel.text = RolesData.description[role]
             descriptionOfRoleLabel.textAlignment = .left
             descriptionOfRoleLabel.font = descriptionOfRoleLabel.font.withSize(19)
+            descriptionOfRoleLabel.textColor = .black
             
         } else {
             // Update and formate description label
             descriptionOfRoleLabel.text = waitingMessage.randomElement()
             descriptionOfRoleLabel.textAlignment = .center
             descriptionOfRoleLabel.font = descriptionOfRoleLabel.font.withSize(24)
+            descriptionOfRoleLabel.textColor = .black
         }
     }
     

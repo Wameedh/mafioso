@@ -97,7 +97,10 @@ class EditRolesTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editRoleCell", for: indexPath)
         
-        let player = playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
+//        let player = playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
+        
+        let player = game.playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row)
+        
         cell.textLabel?.text = player.name
         cell.detailTextLabel?.text = player.role
         
@@ -111,7 +114,8 @@ class EditRolesTableVC: UITableViewController {
             numberOfPlayersIsOne = true
         }
         
-        selectedPlayer = playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
+        selectedPlayer = game.playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row)
+          //  playerForCell(sectionIndex: indexPath.section, rowIndex: indexPath.row, game: game)
         
         performSegue(withIdentifier: "toSelectingRoleTVC", sender: self)
         

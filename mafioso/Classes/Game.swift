@@ -68,6 +68,29 @@ class Game {
         return player
     }
     
+    func playerForCell(sectionIndex: Int, rowIndex: Int) -> Player {
+        
+        switch (sectionIndex) {
+        case 0:
+            return innocentsGroup[rowIndex]
+        case 1:
+            return mafiaGroup[rowIndex]
+        default:
+            return othersGroup[rowIndex]
+        }
+    }
+    
+    // This function is used when the modrator selects a player and kill or rivive them.
+    func changePlayerStatus(sectionIndex: Int, rowIndex: Int, status: Bool) {
+        switch (sectionIndex) {
+        case 0:
+            innocentsGroup[rowIndex].status = status
+        case 1:
+            mafiaGroup[rowIndex].status = status
+        default:
+            othersGroup[rowIndex].status = status
+        }
+    }
     
     //Populate the ArrayOfUsersIds with the ids of all users in the game
     private func populateArrayOfUsersIds(){

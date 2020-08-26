@@ -24,18 +24,18 @@ func presentAlert(title: String?, message: String?, vc: UIViewController, action
 }
 
 
-func playerForCell(sectionIndex: Int, rowIndex: Int, game: Game) -> Player {
-    
-    switch (sectionIndex) {
-    case 0:
-        return game.innocentsGroup[rowIndex]
-    case 1:
-        return game.mafiaGroup[rowIndex]
-        
-    default:
-        return game.othersGroup[rowIndex]
-    }
-}
+//func playerForCell(sectionIndex: Int, rowIndex: Int, game: Game) -> Player {
+//
+//    switch (sectionIndex) {
+//    case 0:
+//        return game.innocentsGroup[rowIndex]
+//    case 1:
+//        return game.mafiaGroup[rowIndex]
+//
+//    default:
+//        return game.othersGroup[rowIndex]
+//    }
+//}
 
 
 func ShowCustomSVProgressHUD() {
